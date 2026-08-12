@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.gz binary
+*.joblib binary
+*.pdf binary
+*.png binary
+*.sqlite binary
+*.db binary
+*.bam binary
+*.bai binary
+*.cram binary
+*.crai binary

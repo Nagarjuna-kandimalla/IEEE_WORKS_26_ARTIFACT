@@ -1,0 +1,7 @@
+workflow,baseline_minutes,strace_minutes,ebpf_minutes,strace_overhead_pct,ebpf_overhead_pct,timing_basis
+gatk,8.974,9.472,9.471,5.55,5.54,direct
+minimap2,8.582,10.914,20.497,27.18,138.85,direct
+sarek,326.029,736.995,332.514,126.05,1.99,reconstructed_active
+seqinspector,20.402,25.837,28.330,26.64,38.86,direct
+taxprofiler,18.233,28.909,27.742,58.55,52.15,direct
+viralmetagenome,20.738,23.487,38.330,13.25,84.82,direct

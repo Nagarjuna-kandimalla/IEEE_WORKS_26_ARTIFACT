@@ -1,0 +1,2 @@
+tool,db_name,db_params,db_type,db_path
+kraken2,standard8_20260626,--memory-mapping --quick,short,https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08_GB_20260626.tar.gz
