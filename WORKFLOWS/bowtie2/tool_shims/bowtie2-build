@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+image="${CAMP_BOWTIE2_IMAGE:?CAMP_BOWTIE2_IMAGE is required}"
+bind="${CAMP_APPTAINER_BIND:?CAMP_APPTAINER_BIND is required}"
+exec apptainer exec --bind "$bind" "$image" bowtie2-build "$@"

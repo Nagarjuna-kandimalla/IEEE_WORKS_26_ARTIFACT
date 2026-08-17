@@ -428,3 +428,20 @@ python3 SCRIPTS/RQ4/figures/generate_rq4_selective_audit.py
 
 `RQ4/README.md` gives the complete frozen-input-to-figure command. The retained
 result consists of the repetition table and final risk-target PNG/PDF.
+
+## RQ5 live Bowtie2 online feedback
+
+RQ5 is under `RQ5/`:
+
+```text
+prepare_workspace.py       create an external fresh experiment tree
+build_initial_state.sh     rebuild models, policies, and non-Bowtie history
+experiment_template/       finalized APC-only learner and live integration
+figures/                   Bowtie2 cold/warm figure generator
+README.md                  packaged-data and full Slurm command sequences
+```
+
+The full route uses the included Bowtie2 workflow and the RQ1 eBPF tracer,
+then executes a 6,000-task cold run followed by a 6,000-task warm run. Follow
+`RQ5/README.md`; do not launch the workflow directly because the ordered
+runner also starts and monitors the learner and prediction service.

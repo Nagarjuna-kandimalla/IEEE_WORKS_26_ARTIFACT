@@ -130,3 +130,26 @@ echo '6aff8bf1b5030a78c115715d66e0f85b4e808f2ccc57445563dfa4b0b49794a8  RESULTS/
 
 See `SCRIPTS/RQ4/README.md` for both the short figure command and the complete
 input-to-figure experiment command.
+
+## RQ5 live Bowtie2 online feedback
+
+```text
+RQ5/csv/bowtie2_cold_attempts.csv.gz
+RQ5/csv/bowtie2_warm_attempts.csv.gz
+RQ5/csv/bowtie2_cold_task_instances.tsv.gz
+RQ5/csv/bowtie2_warm_task_instances.tsv.gz
+RQ5/figures/fig_rq5_bowtie_feedback.{png,pdf}
+```
+
+The two task-instance tables contain 6,000 logical tasks each and directly
+regenerate the revised requested-capacity, reservation-wastage, and
+first-attempt-margin figure. The attempt tables retain the 6,016 cold and
+6,015 warm attempts, including retries.
+
+```bash
+echo '0fc92d92db85fbc244fc5b6b3fc1bdd71605df8922641271a2e09c1b87cef84b  RESULTS/RQ5/csv/bowtie2_cold_task_instances.tsv.gz' | sha256sum -c -
+echo 'c7458fcda6bde477d9fe3ef70fd5abb5e30499e0dde95e486a073c835ad3b897  RESULTS/RQ5/csv/bowtie2_warm_task_instances.tsv.gz' | sha256sum -c -
+echo '83975dd337287ca6985bf85067dba30d040b7fbf4c9e2f21244cb24cab6b85f5  RESULTS/RQ5/figures/fig_rq5_bowtie_feedback.png' | sha256sum -c -
+```
+
+See `SCRIPTS/RQ5/README.md` for the packaged-data and full Slurm routes.

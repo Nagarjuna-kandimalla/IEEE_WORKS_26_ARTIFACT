@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+output=""
+arguments=("$@")
+for ((index = 0; index < ${#arguments[@]}; index++)); do
+  if [[ "${arguments[$index]}" == "-O" ]] && ((index + 1 < ${#arguments[@]})); then
+    output="${arguments[$((index + 1))]}"
+    break
+  fi
+done
+
+status=0
+/usr/bin/wget \
+  --tries=10 \
+  --retry-connrefused \
+  --waitretry=5 \
+  --timeout=120 \
+  "$@" || status=$?
+if ((status != 0)); then
+  [[ -n "$output" ]] && rm -f "$output"
+  exit "$status"
+fi
+
+if [[ "$output" == *.gz ]] && ! gzip -t "$output"; then
+  echo "ERROR: downloaded payload is not a valid gzip file: $output" >&2
+  rm -f "$output"
+  exit 4
+fi

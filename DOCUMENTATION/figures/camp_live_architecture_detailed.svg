@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">CAMP Live Deployment — Detailed Architecture</title>
+  <desc id="desc">Detailed live architecture connecting Nextflow and Slurm control, CAMP online prediction and calibration, selective eBPF auditing, causal history, monitoring, offline validation, and controlled model deployment.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 36px Arial, sans-serif; fill: #0f2a5f; }
+      .lane-title { font: 700 22px Arial, sans-serif; fill: white; }
+      .box-title { font: 700 18px Arial, sans-serif; fill: #0f2a5f; }
+      .box-title-orange { font: 700 18px Arial, sans-serif; fill: #c2410c; }
+      .body { font: 15px Arial, sans-serif; fill: #172033; }
+      .small { font: 13px Arial, sans-serif; fill: #334155; }
+      .label { font: 700 14px Arial, sans-serif; fill: #334155; }
+      .lane { fill: #f8fafc; stroke: #0f2a5f; stroke-width: 2; }
+      .lane-teal { fill: #f0fdfa; stroke: #0f766e; stroke-width: 2; }
+      .box { fill: white; stroke: #0f2a5f; stroke-width: 2; rx: 12; }
+      .box-teal { fill: white; stroke: #0f766e; stroke-width: 2; rx: 12; }
+      .box-orange { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 12; }
+      .flow { fill: none; stroke: #334155; stroke-width: 2.4; marker-end: url(#arrow); }
+      .feedback { fill: none; stroke: #0f766e; stroke-width: 2.6; marker-end: url(#arrow); }
+      .deploy { fill: none; stroke: #2563eb; stroke-width: 2.6; marker-end: url(#arrow); }
+      .dashed { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; stroke-dasharray: 8 6; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1100" fill="white"/>
+  <text x="800" y="52" text-anchor="middle" class="title">CAMP Live Deployment — Detailed Architecture</text>
+
+  <!-- Swimlanes -->
+  <rect x="20" y="80" width="1560" height="160" class="lane" rx="16"/>
+  <rect x="20" y="260" width="1560" height="250" class="lane-teal" rx="16"/>
+  <rect x="20" y="530" width="1560" height="250" class="lane" rx="16"/>
+  <rect x="20" y="800" width="1560" height="270" class="lane" rx="16"/>
+
+  <rect x="20" y="80" width="135" height="160" fill="#0f2a5f" rx="16"/>
+  <rect x="20" y="260" width="135" height="250" fill="#0f766e" rx="16"/>
+  <rect x="20" y="530" width="135" height="250" fill="#0f2a5f" rx="16"/>
+  <rect x="20" y="800" width="135" height="270" fill="#0f2a5f" rx="16"/>
+  <text x="87" y="145" text-anchor="middle" class="lane-title"><tspan x="87">Control</tspan><tspan x="87" dy="28">Plane</tspan></text>
+  <text x="87" y="350" text-anchor="middle" class="lane-title"><tspan x="87">Online</tspan><tspan x="87" dy="28">Decision</tspan><tspan x="87" dy="28">Plane</tspan></text>
+  <text x="87" y="630" text-anchor="middle" class="lane-title"><tspan x="87">Execution &amp;</tspan><tspan x="87" dy="28">Audit Plane</tspan></text>
+  <text x="87" y="895" text-anchor="middle" class="lane-title"><tspan x="87">Learning &amp;</tspan><tspan x="87" dy="28">Monitoring</tspan><tspan x="87" dy="28">Plane</tspan></text>
+
+  <!-- Control plane -->
+  <rect x="220" y="115" width="260" height="90" class="box"/>
+  <text x="350" y="150" text-anchor="middle" class="box-title"><tspan x="350">Nextflow</tspan><tspan x="350" dy="24">Orchestrator</tspan></text>
+  <rect x="635" y="115" width="260" height="90" class="box"/>
+  <text x="765" y="150" text-anchor="middle" class="box-title"><tspan x="765">Slurm</tspan><tspan x="765" dy="24">Scheduler</tspan></text>
+  <rect x="1050" y="115" width="260" height="90" class="box"/>
+  <text x="1180" y="150" text-anchor="middle" class="box-title"><tspan x="1180">Workflow</tspan><tspan x="1180" dy="24">Task Queue</tspan></text>
+  <path d="M480 160 H635" class="flow"/>
+  <text x="558" y="150" text-anchor="middle" class="label">submits</text>
+  <path d="M895 160 H1050" class="flow"/>
+  <text x="973" y="150" text-anchor="middle" class="label">enqueues</text>
+
+  <!-- Online decision plane -->
+  <rect x="185" y="305" width="315" height="155" class="box-teal"/>
+  <text x="342" y="335" text-anchor="middle" class="box-title">Prelaunch Feature Builder</text>
+  <text x="210" y="370" class="body"><tspan x="210">A: static task + system</tspan><tspan x="210" dy="24">P: causal prior peak history</tspan><tspan x="210" dy="24">C: prior consumption + C-hat</tspan></text>
+
+  <rect x="555" y="305" width="260" height="155" class="box-teal"/>
+  <text x="685" y="340" text-anchor="middle" class="box-title">CAMP Model Service</text>
+  <text x="685" y="377" text-anchor="middle" class="body"><tspan x="685">C-hat model</tspan><tspan x="685" dy="25">Peak quantiles q50–q99.5</tspan></text>
+
+  <rect x="870" y="305" width="270" height="155" class="box-teal"/>
+  <text x="1005" y="335" text-anchor="middle" class="box-title">Calibration &amp; Policy</text>
+  <text x="1005" y="370" text-anchor="middle" class="body"><tspan x="1005">Hierarchical residuals</tspan><tspan x="1005" dy="24">Coverage constraints</tspan><tspan x="1005" dy="24">Process-tail safety</tspan></text>
+
+  <rect x="1195" y="305" width="220" height="155" class="box-teal"/>
+  <text x="1305" y="355" text-anchor="middle" class="box-title">Memory Allocation</text>
+  <text x="1305" y="392" text-anchor="middle" class="body">Ceil to MiB</text>
+
+  <path d="M1180 205 V275 H342 V305" class="flow"/>
+  <path d="M500 382 H555" class="flow"/>
+  <path d="M815 382 H870" class="flow"/>
+  <path d="M1140 382 H1195" class="flow"/>
+
+  <rect x="1430" y="300" width="125" height="170" fill="white" stroke="#0f766e" stroke-width="2" stroke-dasharray="8 6" rx="12"/>
+  <text x="1492" y="340" text-anchor="middle" class="label"><tspan x="1492">Current-task</tspan><tspan x="1492" dy="22">outcomes are</tspan><tspan x="1492" dy="22">never inference</tspan><tspan x="1492" dy="22">features</tspan></text>
+
+  <!-- Execution and audit plane -->
+  <rect x="185" y="575" width="225" height="95" class="box"/>
+  <text x="297" y="615" text-anchor="middle" class="box-title"><tspan x="297">Slurm Worker</tspan><tspan x="297" dy="24">Task</tspan></text>
+  <path d="M1305 460 V500 H297 V575" class="flow"/>
+
+  <polygon points="505,575 585,622 505,669 425,622" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="505" y="616" text-anchor="middle" class="box-title-orange"><tspan x="505">Selective</tspan><tspan x="505" dy="22">Audit?</tspan></text>
+  <path d="M410 622 H425" class="flow"/>
+
+  <rect x="350" y="690" width="310" height="70" class="box-orange"/>
+  <text x="505" y="713" text-anchor="middle" class="box-title-orange">Three-Gate Selector</text>
+  <text x="505" y="740" text-anchor="middle" class="small">80% Risk · 10% Information · 10% Discovery</text>
+  <path d="M505 690 V669" class="flow"/>
+
+  <rect x="180" y="690" width="150" height="70" class="dashed"/>
+  <text x="255" y="715" text-anchor="middle" class="small"><tspan x="255">Equal-budget:</tspan><tspan x="255" dy="20">uniform + process-</tspan><tspan x="255" dy="18">stratified</tspan></text>
+  <path d="M330 725 H350" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+  <rect x="690" y="555" width="330" height="80" class="box-orange"/>
+  <text x="715" y="585" class="box-title-orange">No Audit</text>
+  <text x="715" y="612" class="body">Peak RSS + runtime</text>
+  <path d="M585 607 H650 V595 H690" class="flow"/>
+  <text x="630" y="590" class="label">No</text>
+
+  <rect x="690" y="655" width="330" height="105" class="box-orange"/>
+  <text x="715" y="685" class="box-title-orange">eBPF Audit</text>
+  <text x="715" y="712" class="body">Read bytes + mmap-fault bytes</text>
+  <text x="715" y="738" class="small">consumed = successful reads + mmap faults</text>
+  <path d="M585 637 H650 V707 H690" class="flow"/>
+  <text x="630" y="690" class="label">Yes</text>
+
+  <rect x="1110" y="605" width="260" height="105" class="box"/>
+  <text x="1240" y="650" text-anchor="middle" class="box-title"><tspan x="1240">Completed</tspan><tspan x="1240" dy="24">Outcome</tspan></text>
+  <path d="M1020 595 H1060 V640 H1110" class="flow"/>
+  <path d="M1020 707 H1060 V675 H1110" class="flow"/>
+
+  <!-- Learning and monitoring plane -->
+  <rect x="185" y="845" width="270" height="150" class="box"/>
+  <text x="320" y="880" text-anchor="middle" class="box-title">Causal History Store</text>
+  <text x="320" y="915" text-anchor="middle" class="body"><tspan x="320">Only completed tasks</tspan><tspan x="320" dy="24">Peak RSS, runtime, consumption</tspan></text>
+
+  <rect x="510" y="845" width="235" height="150" class="box"/>
+  <text x="627" y="875" text-anchor="middle" class="box-title">Monitoring</text>
+  <text x="535" y="905" class="small"><tspan x="535">Underallocations · Coverage</tspan><tspan x="535" dy="21">Request / peak</tspan><tspan x="535" dy="21">Unused memory-time · Drift</tspan></text>
+
+  <rect x="840" y="845" width="315" height="150" class="box"/>
+  <text x="997" y="875" text-anchor="middle" class="box-title">Offline Training &amp; Validation</text>
+  <text x="997" y="910" text-anchor="middle" class="body"><tspan x="997">Grouped cross-fitting</tspan><tspan x="997" dy="24">Chronological holdout</tspan><tspan x="997" dy="24">Seed / split variance</tspan></text>
+
+  <rect x="1260" y="845" width="260" height="150" class="box"/>
+  <text x="1390" y="890" text-anchor="middle" class="box-title">Model Registry</text>
+  <text x="1390" y="925" text-anchor="middle" class="body"><tspan x="1390">Validated model</tspan><tspan x="1390" dy="24">+ allocation policy</tspan></text>
+
+  <!-- Correct feedback, monitoring, training, and deployment connectors -->
+  <path d="M1240 710 V815 H320 V845" class="feedback"/>
+  <path d="M1240 710 V790 H627 V845" class="deploy"/>
+  <path d="M320 845 V800 H170 V285 H342 V305" class="feedback"/>
+  <text x="180" y="555" class="label">causal history</text>
+  <path d="M455 920 H790 V965 H840" class="feedback"/>
+  <path d="M745 920 H840" class="flow"/>
+  <text x="792" y="906" text-anchor="middle" class="small">drift / safety trigger</text>
+  <path d="M1155 920 H1260" class="flow"/>
+  <path d="M1390 845 V490 H685 V460" class="deploy"/>
+  <text x="1040" y="482" text-anchor="middle" class="label">controlled deployment</text>
+</svg>
