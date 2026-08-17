@@ -137,7 +137,7 @@ the scripts stop if an earlier seed-1996 run is already present.
 ```bash
 cd "$artifact_root/SCRIPTS/RQ3"
 python scripts/preflight.py
-python scripts/run_design3.py --seed 1996 --n-jobs 32
+python scripts/run_camp.py --seed 1996 --n-jobs 32
 
 for variant in A A+P A+P+C
 do

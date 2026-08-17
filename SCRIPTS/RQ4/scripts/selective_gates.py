@@ -1,4 +1,4 @@
-"""Leakage-safe three-gate selective auditing for CAMP Design 3."""
+"""Leakage-safe three-gate selective auditing for CAMP."""
 
 from __future__ import annotations
 
@@ -206,7 +206,7 @@ def build_gate_features(
     frame: pd.DataFrame,
     scenario: str,
 ) -> tuple[pd.DataFrame, tuple[str, ...], tuple[str, ...]]:
-    """Build legal pre-audit features for one active Design 3 allocator."""
+    """Build legal pre-audit features for one active CAMP allocator."""
 
     prefix = _active_prefix(scenario)
     materialized = materialize_model_features(frame)

@@ -17,7 +17,7 @@ from modeling import (
     fit_final_per_process_predictions,
     materialize_model_features,
 )
-from run_design3 import prediction_frame
+from run_camp import prediction_frame
 
 
 TAIL_QUANTILES = (0.9, 0.95, 0.99, 0.995)

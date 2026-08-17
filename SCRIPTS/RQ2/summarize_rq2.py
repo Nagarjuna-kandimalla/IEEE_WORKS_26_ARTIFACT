@@ -307,7 +307,7 @@ def main() -> None:
     test_percent = int(round(100.0 * test_fraction))
     report = f"""# RQ2 {train_percent}/{test_percent} Seed {args.seed} Result
 
-This experiment retrains the unchanged Design 3 pipeline on the earliest
+This experiment retrains the unchanged CAMP pipeline on the earliest
 {train_percent}% of split groups within each workflow and replays the
 remaining {test_percent}%. The development population has {train_rows:,}
 tasks and the holdout has {test_rows:,}.

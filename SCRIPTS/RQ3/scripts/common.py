@@ -1,4 +1,4 @@
-"""Shared utilities for the isolated CAMP Design 3 experiment."""
+"""Shared utilities for the CAMP experiment."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate Design 3 selective auditing at equal task-count budgets."""
+"""Evaluate CAMP selective auditing at equal task-count budgets."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_s
 
 from calibration import apply_policy_sequentially
 from common import ROOT, write_json
-from design3_gates import (
+from selective_gates import (
     DEFAULT_LANE_FRACTIONS,
     add_gate_targets,
     build_gate_plan,
@@ -88,7 +88,7 @@ def _assert_aligned(left: pd.DataFrame, right: pd.DataFrame, name: str) -> None:
         left["logical_task_id"].astype(str).to_numpy()
         == right["logical_task_id"].astype(str).to_numpy()
     ).all():
-        raise ValueError(f"unaligned Design 3 artifact: {name}")
+        raise ValueError(f"unaligned CAMP artifact: {name}")
 
 
 def _prediction_map(
@@ -949,12 +949,12 @@ def make_figures(
             frameon=False,
         )
         figure.suptitle(
-            "Design 3 selective-audit yield: "
+            "CAMP selective-audit yield: "
             + ("A+P" if scenario == "a_plus_p" else "A+P+C"),
             y=0.995,
         )
         figure.tight_layout(rect=(0.0, 0.0, 1.0, 0.90))
-        stem = f"design3_{scenario}_selective_audit_yield"
+        stem = f"camp_{scenario}_selective_audit_yield"
         figure.savefig(output / f"{stem}.png", dpi=220, bbox_inches="tight")
         figure.savefig(output / f"{stem}.pdf", bbox_inches="tight")
         plt.close(figure)
@@ -989,12 +989,12 @@ def make_figures(
         axis.legend(frameon=False)
         figure.tight_layout()
         figure.savefig(
-            output / "design3_workflow_yield_at_20_percent.png",
+            output / "camp_workflow_yield_at_20_percent.png",
             dpi=220,
             bbox_inches="tight",
         )
         figure.savefig(
-            output / "design3_workflow_yield_at_20_percent.pdf",
+            output / "camp_workflow_yield_at_20_percent.pdf",
             bbox_inches="tight",
         )
         plt.close(figure)
@@ -1056,7 +1056,7 @@ def make_figures(
             + ("A+P mode" if scenario == "a_plus_p" else "A+P+C mode")
         )
         figure.tight_layout()
-        stem = f"design3_{scenario}_20_percent_comparison"
+        stem = f"camp_{scenario}_20_percent_comparison"
         figure.savefig(output / f"{stem}.png", dpi=220, bbox_inches="tight")
         figure.savefig(output / f"{stem}.pdf", bbox_inches="tight")
         plt.close(figure)
@@ -1065,7 +1065,7 @@ def make_figures(
 def main() -> None:
     args = arguments()
     started = time.time()
-    output = ROOT / "results" / f"seed_{args.seed}" / "gating_design3"
+    output = ROOT / "results" / f"seed_{args.seed}" / "selective_gating"
     output.mkdir(parents=True, exist_ok=True)
     initial, test = load_analysis_frames(args.seed)
     all_repetitions = []
@@ -1195,7 +1195,7 @@ def main() -> None:
     write_json(
         output / "evaluation_manifest.json",
         {
-            "design": "CAMP Design 3 three-gate selective auditing",
+            "design": "CAMP three-gate selective auditing",
             "seed": args.seed,
             "initial_rows": len(initial),
             "test_rows": len(test),
@@ -1210,7 +1210,7 @@ def main() -> None:
             ),
             "allocation_label_contract": (
                 "initial gate labels use grouped-fold-external residual "
-                "histories; test labels use frozen Design 3 task allocations"
+                "histories; test labels use frozen CAMP task allocations"
             ),
             "elapsed_seconds": time.time() - started,
             "python": sys.version,

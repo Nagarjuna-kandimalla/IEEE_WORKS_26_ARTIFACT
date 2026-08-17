@@ -19,8 +19,8 @@ The full route is a single-host Python experiment, not a Slurm workflow run.
 ```text
 DATA/RQ4/inputs/seed_1996/             compressed frozen experiment inputs
 SCRIPTS/RQ4/prepare_inputs.py          expand the frozen inputs
-SCRIPTS/RQ4/scripts/evaluate_design3_gates.py
-SCRIPTS/RQ4/scripts/{calibration,common,design3_gates,history,modeling}.py
+SCRIPTS/RQ4/scripts/evaluate_selective_gates.py
+SCRIPTS/RQ4/scripts/{calibration,common,selective_gates,history,modeling}.py
 SCRIPTS/RQ4/config/experiment.json
 SCRIPTS/RQ4/models/seed_1996/signature_scaler.joblib
 SCRIPTS/RQ4/policies/seed_1996/{a_plus_p,a_plus_p_plus_c}.json
@@ -80,14 +80,14 @@ python3.9 -m venv "$rq4_environment"
 
 cd "$artifact_root/SCRIPTS/RQ4"
 "$rq4_environment/bin/python" prepare_inputs.py
-"$rq4_environment/bin/python" scripts/evaluate_design3_gates.py \
+"$rq4_environment/bin/python" scripts/evaluate_selective_gates.py \
   --seed 1996 \
   --n-jobs 8 \
   --repetitions 1000 \
   --sensitivity-repetitions 200 \
   --budgets 0.05 0.10 0.20 0.30 0.50 1.00
 
-generated="$artifact_root/SCRIPTS/RQ4/results/seed_1996/gating_design3"
+generated="$artifact_root/SCRIPTS/RQ4/results/seed_1996/selective_gating"
 result_csv="$artifact_root/RESULTS/RQ4/csv"
 mkdir -p "$result_csv"
 awk -F, 'NR == 1 || $1 == "a_plus_p"' \
@@ -100,7 +100,7 @@ cd "$artifact_root"
 ```
 
 The evaluator creates working files under
-`SCRIPTS/RQ4/results/seed_1996/gating_design3/`; this path is ignored by Git.
+`SCRIPTS/RQ4/results/seed_1996/selective_gating/`; this path is ignored by Git.
 Its full repetition table has 36,000 rows across A+P, A+P+C, three policies,
 six budgets, and 1,000 repetitions. It also writes every task's three-gate
 selection decision at the 20% budget to `selected_tasks_20_percent.tsv`, the

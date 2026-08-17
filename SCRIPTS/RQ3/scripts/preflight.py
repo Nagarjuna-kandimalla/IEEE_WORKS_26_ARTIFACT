@@ -33,12 +33,12 @@ PATCHED_MODELING_SHA256 = (
     "f8bcfa72447ecacab93b8d3e9ecb05b663270b7906b20208100725741d7c00ae"
 )
 EXPECTED_CAMP_SOURCE_SHA256 = {
-    "common.py": "7bd8867c7a12eabd0287c4aba0d075d10e9b62122495260ad0509f76770af667",
+    "common.py": "0b39f4f0556040e33a76af2def1fc07d4fbe975d2b8e83cdd61cbdd7151c18f8",
     "history.py": "e199531d6abded01770d1821caeb2b8b64e62cac7a8a5dafbcb5c604cb52e513",
     "modeling.py": PATCHED_MODELING_SHA256,
     "calibration.py": "35c2947867e293f626302b09548cdb58aa6d09662b71b2530bb8f447819739b9",
-    "run_design3.py": "14f09d476c013640aa754983098a48f2607ce702d66c020726aa83248a42df6a",
-    "train_process_tail.py": "67fe3d1d498d4886f5fcf3e2642f1c55278f521b4a1333d63693b3306ba927bb",
+    "run_camp.py": "02c6c90668279d6ccb44af955fd17b6278b647e478671919d6ca87559a86903e",
+    "train_process_tail.py": "bcf743ce1db5ee42069a999720b7e9a7471d1d89c4d50999e0a60105193aa5aa",
 }
 REQUIRED_SOURCE_FIELDS = (
     "logical_task_id",
@@ -194,7 +194,7 @@ def main() -> None:
         "history.py",
         "modeling.py",
         "calibration.py",
-        "run_design3.py",
+        "run_camp.py",
         "train_process_tail.py",
     ):
         local_path = ROOT / "scripts" / name

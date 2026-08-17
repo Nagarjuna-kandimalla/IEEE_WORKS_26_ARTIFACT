@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the isolated CAMP Design 3 offline causal replay."""
+"""Run the CAMP offline experiment."""
 
 from __future__ import annotations
 
@@ -148,7 +148,7 @@ def prediction_frame(
             )
             .astype(int)
             .to_numpy(),
-            "method": "CAMP-Design3",
+            "method": "CAMP",
             "feature_view": variant,
             "raw_prediction_mib": predictions[0.5],
             "point_q50_prediction_mib": predictions[0.5],
@@ -212,7 +212,7 @@ def main() -> None:
     config = load_config()
     if args.seed != int(config["seed"]):
         raise ValueError(
-            "Design 3 primary implementation is frozen to seed "
+            "CAMP primary implementation is frozen to seed "
             f"{config['seed']}; received {args.seed}"
         )
 
