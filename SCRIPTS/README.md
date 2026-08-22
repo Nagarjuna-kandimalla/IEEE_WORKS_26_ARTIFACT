@@ -436,7 +436,7 @@ RQ5 is under `RQ5/`:
 ```text
 prepare_workspace.py       create an external fresh experiment tree
 build_initial_state.sh     rebuild models, policies, and non-Bowtie history
-experiment_template/       finalized APC-only learner and live integration
+experiment_template/       finalized CAMP learner and live integration
 figures/                   Bowtie2 cold/warm figure generator
 README.md                  packaged-data and full Slurm command sequences
 ```

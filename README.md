@@ -23,7 +23,7 @@ The artifact currently covers RQ1 through RQ5:
 
 Frozen result tables and figures are included for RQ1 through RQ5. RQ4 also
 includes the frozen inputs needed to repeat its evaluation, and RQ5 includes
-the live APC-only implementation and Bowtie2 workflow integration.
+the live CAMP implementation and Bowtie2 workflow integration.
 
 Run all commands in this README from the artifact root:
 

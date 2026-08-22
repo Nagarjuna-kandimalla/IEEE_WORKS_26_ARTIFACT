@@ -2,8 +2,9 @@
 
 RQ5 compares a Bowtie2 cold run with a subsequent warm run. The cold run
 starts with no Bowtie2 history. Its completed outcomes update the model during
-execution and seed the warm run. A and A+P remain shadow predictions; direct
-A+P+C is the only policy that selects submitted memory.
+execution and seed the warm run. Direct A+P+C selects submitted memory. For a
+known workflow, the process-tail prediction uses the global prediction as its
+fallback, and RQ2 I0–I5 residual calibration uses strictly prior outcomes.
 
 Choose one route:
 
@@ -96,17 +97,17 @@ expands the frozen train/calibration/test split, and copies the exact model and
 online source into the external experiment directory. It refuses to overwrite
 an existing workspace.
 
-### 2. Test the APC-only policy
+### 2. Test the CAMP policy
 
 ```bash
-cd "$experiment_root/design_3/live_online_learning_apc_only"
-"$rq5_environment/bin/python" -m unittest -v tests/test_apc_only_policy.py
+cd "$experiment_root/camp/live_online_learning"
+"$rq5_environment/bin/python" -m unittest -v tests/test_camp_policy.py
 cd "$artifact_root"
 ```
 
-The tests check A independence, causal residual updates, version-matched
-calibration, local learner databases, learner liveness monitoring, and the
-fixed submission-rate limit.
+The tests check direct A+P+C allocation, process-to-global fallback, RQ2 I0–I5
+residual updates, version-matched calibration, local learner databases,
+learner liveness monitoring, and the fixed submission-rate limit.
 
 ### 3. Rebuild the cold-start state
 
@@ -123,8 +124,8 @@ sbatch --wait \
   "$artifact_root" "$experiment_root"
 ```
 
-This deterministically rebuilds the seed-1996 A, A+P, and A+P+C models,
-process-tail policies, APC-only policy, 28,490-row non-Bowtie history, SQLite
+This deterministically rebuilds the seed-1996 direct A+P+C model, A+P+C
+process-tail policy, CAMP policy, 28,490-row non-Bowtie history, SQLite
 history, and workflow-cold model. The generated state is written to:
 
 ```text
@@ -167,7 +168,7 @@ export CAMP_LEARNER_NODELIST="${CAMP_LEARNER_NODELIST:-mempred-worker-13}"
 export CAMP_WORKER_CONSTRAINT="${CAMP_WORKER_CONSTRAINT:-standard}"
 export CAMP_QUEUE_SIZE="${CAMP_QUEUE_SIZE:-384}"
 
-online_root="$experiment_root/design_3/live_online_learning_apc_only"
+online_root="$experiment_root/camp/live_online_learning"
 initial="$experiment_root/artifacts"
 cold_label="rq5_bowtie2_cold"
 
@@ -196,7 +197,7 @@ Verify cold completion before starting warm:
 ```bash
 cold_run="$RQ5_RUN_ROOT/runs/$cold_label"
 grep -q 'Execution complete' "$cold_run/.nextflow.log"
-test "$(wc -l < "$cold_run/results/metrics/camp_design3/task_instances.tsv")" \
+test "$(wc -l < "$cold_run/results/metrics/camp/task_instances.tsv")" \
   -eq 6001
 test -s "$cold_run/camp/postrun_history.sqlite3"
 test -s "$cold_run/camp/current_model.json"
@@ -245,9 +246,9 @@ Verify warm completion:
 ```bash
 warm_run="$RQ5_RUN_ROOT/runs/$warm_label"
 grep -q 'Execution complete' "$warm_run/.nextflow.log"
-test "$(wc -l < "$warm_run/results/metrics/camp_design3/task_instances.tsv")" \
+test "$(wc -l < "$warm_run/results/metrics/camp/task_instances.tsv")" \
   -eq 6001
-test -s "$warm_run/results/metrics/camp_design3/summary.json"
+test -s "$warm_run/results/metrics/camp/summary.json"
 ```
 
 ### 7. Publish task tables and generate the figure
@@ -257,16 +258,16 @@ untouched:
 
 ```bash
 gzip -n -c \
-  "$cold_run/results/metrics/camp_design3/task_attempts.csv" \
+  "$cold_run/results/metrics/camp/task_attempts.csv" \
   > RESULTS/RQ5/csv/bowtie2_cold_attempts.csv.gz
 gzip -n -c \
-  "$warm_run/results/metrics/camp_design3/task_attempts.csv" \
+  "$warm_run/results/metrics/camp/task_attempts.csv" \
   > RESULTS/RQ5/csv/bowtie2_warm_attempts.csv.gz
 gzip -n -c \
-  "$cold_run/results/metrics/camp_design3/task_instances.tsv" \
+  "$cold_run/results/metrics/camp/task_instances.tsv" \
   > RESULTS/RQ5/csv/bowtie2_cold_task_instances.tsv.gz
 gzip -n -c \
-  "$warm_run/results/metrics/camp_design3/task_instances.tsv" \
+  "$warm_run/results/metrics/camp/task_instances.tsv" \
   > RESULTS/RQ5/csv/bowtie2_warm_task_instances.tsv.gz
 
 "$rq5_environment/bin/python" \

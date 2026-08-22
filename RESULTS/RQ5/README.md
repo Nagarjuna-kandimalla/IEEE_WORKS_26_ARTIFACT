@@ -1,6 +1,6 @@
 # RQ5 results
 
-RQ5 retains the successful Bowtie2 APC-only cold/warm `v4` result tables and
+RQ5 retains the successful Bowtie2 direct A+P+C cold/warm `v4` result tables and
 the revised figure without an end-to-end runtime panel.
 
 ```text

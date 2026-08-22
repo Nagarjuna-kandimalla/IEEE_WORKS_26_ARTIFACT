@@ -1,0 +1,15 @@
+{
+  "name": "camp_q995_residual_q99",
+  "feature_view": "A+P+C",
+  "base_policy": "model_q995",
+  "mode": "hierarchical",
+  "residual_quantile": 0.99,
+  "selection_source": "training-only calibration candidates",
+  "selection_rows": 3627,
+  "selection_global_coverage": 0.9975186104218362,
+  "selection_minimum_workflow_coverage": 0.9833333333333333,
+  "selection_request_to_peak_ratio": 2.8743068482132714,
+  "selection_oom_tasks": 9,
+  "uses_a_prediction": false,
+  "test_labels_used_for_allocation": false
+}
