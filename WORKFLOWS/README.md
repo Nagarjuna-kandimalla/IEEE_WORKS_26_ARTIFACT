@@ -1,8 +1,8 @@
 # Workflow acquisition and setup
 
-The CAMP experiments use six workflows. Four are unmodified nf-core workflows
-downloaded at fixed releases; the two custom Nextflow workflows are included
-under `WORKFLOWS/gatk` and `WORKFLOWS/minimap2`.
+RQ1 uses six workflows. Four are unmodified nf-core workflows downloaded at
+fixed releases; the GATK and Minimap2 custom workflows are included here. RQ5
+adds the included custom Bowtie2 live workflow.
 
 | Workflow | Source type | Frozen release | Paper role |
 |---|---|---:|---|
@@ -12,6 +12,11 @@ under `WORKFLOWS/gatk` and `WORKFLOWS/minimap2`.
 | Viralmetagenome | nf-core | 1.1.3 | Matched Exp 0/1/2 cohort |
 | GATK | Custom Nextflow | GATK 4.5.0.0 | Documented separately |
 | Minimap2 | Custom Nextflow | Frozen artifact source | Documented separately |
+| Bowtie2 | Custom Nextflow | Bowtie2 2.4.2 | RQ5 cold/warm online feedback |
+
+Bowtie2 is not part of the RQ1 six-workflow cohort. Its acquisition,
+container, input-streaming, cold/warm, and result commands are in
+[`../SCRIPTS/RQ5/README.md`](../SCRIPTS/RQ5/README.md).
 
 ## Position in the RQ1 end-to-end route
 

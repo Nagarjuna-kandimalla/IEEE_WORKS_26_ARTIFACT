@@ -7,7 +7,7 @@ This artifact supports the experiments for Consumption-Aware Memory Prediction
 causal history from completed tasks, and uses that information to improve
 memory allocation for later tasks.
 
-The artifact currently covers RQ1 through RQ4:
+The artifact currently covers RQ1 through RQ5:
 
 - **RQ1:** compare an unaudited workflow run with full STRACE and full eBPF
   auditing, including signal collection and runtime overhead;
@@ -17,10 +17,13 @@ The artifact currently covers RQ1 through RQ4:
 - **RQ3:** compare CAMP with Sizey on the same six-workflow task population and
   train/test assignments; and
 - **RQ4:** compare CAMP selective auditing with uniform random and
-  process-stratified random auditing at equal task budgets.
+  process-stratified random auditing at equal task budgets; and
+- **RQ5:** evaluate live online feedback using a Bowtie2 cold run followed by
+  a warm run seeded with the completed cold outcomes.
 
-Frozen result tables and figures are included for RQ1 through RQ4. RQ4 also
-includes the frozen inputs and scripts needed to repeat its evaluation.
+Frozen result tables and figures are included for RQ1 through RQ5. RQ4 also
+includes the frozen inputs needed to repeat its evaluation, and RQ5 includes
+the live APC-only implementation and Bowtie2 workflow integration.
 
 Run all commands in this README from the artifact root:
 
@@ -39,7 +42,7 @@ explicitly changes it.
 This path does not use Slurm or rerun a workflow or model experiment:
 
 1. Run **Quick verification of packaged results** below.
-2. Run the RQ1 through RQ4 commands, in order, under **Regenerate the packaged
+2. Run the RQ1 through RQ5 commands, in order, under **Regenerate the packaged
    figures** below. Each script reads its corresponding `RESULTS/RQ*/csv`
    files and writes to `RESULTS/RQ*/figures`.
 3. Run the checksum commands in `RESULTS/README.md` to confirm the generated
@@ -58,6 +61,7 @@ the preceding outputs exist:
 | RQ2, offline models | [`SCRIPTS/README.md`](SCRIPTS/README.md) RQ2 Steps 1–5: materialize, run the seed-1996 experiment, publish its task tables, run the repeated matrix, aggregate, and draw the figures |
 | RQ3, Sizey comparison | [`SCRIPTS/RQ3/README.md`](SCRIPTS/RQ3/README.md), from setup through its final figure section |
 | RQ4, selective auditing | [`SCRIPTS/RQ4/README.md`](SCRIPTS/RQ4/README.md), using its **Run the experiment end to end** sequence |
+| RQ5, Bowtie2 online feedback | [`SCRIPTS/RQ5/README.md`](SCRIPTS/RQ5/README.md), using its **Full Slurm route** from workspace creation through cold, warm, and figure generation |
 
 `DATA/README.md` explains the packaged inputs, and `RESULTS/README.md` explains
 the final files. They are reference pages rather than additional execution
@@ -89,6 +93,7 @@ the committed artifact.
 | RQ2 variance | Five seeds over five chronological development/holdout splits | Seed variation and split sensitivity for the allocation results | RQ2 variance and split-testing figures |
 | RQ3 comparison | Sizey and CAMP evaluated on the same 21,337 test tasks | Global accuracy, underallocation, requested-memory, and memory-time metrics | `RESULTS/RQ3/csv/global_metrics.csv` and `fig_sizey_vs_camp.png` |
 | RQ4 selective auditing | CAMP three-gate evaluation against uniform random and process-stratified random selection at six equal task budgets | Packaged A+P risk-target recall repetition table and figure | `RESULTS/RQ4/csv/budget_repetitions.csv.gz` and `RESULTS/RQ4/figures/` |
+| RQ5 online feedback | Fresh Bowtie2 cold run followed by a warm run initialized from all 6,000 cold outcomes | 6,000 successful tasks per run; reduced requested capacity and memory-time waste | `RESULTS/RQ5/csv/` and `fig_rq5_bowtie_feedback.png` |
 
 RQ2 underallocations are offline diagnostics: the first memory request is
 compared with recorded peak RSS. They are not observed scheduler OOM exits.
@@ -114,6 +119,10 @@ echo 'ce723e0b25f5eefe5a5c89e2ec719d8e3b4014318c140f9e86db8ed4b739f55f  RESULTS/
 echo 'fb48f6c5bf0e7541be11e38b4350e02b7a7d5a4ed709700be3dc394a4546c396  RESULTS/RQ4/csv/budget_repetitions.csv.gz' |
   sha256sum -c -
 echo '6aff8bf1b5030a78c115715d66e0f85b4e808f2ccc57445563dfa4b0b49794a8  RESULTS/RQ4/figures/fig_rq4_selective_audit.png' |
+  sha256sum -c -
+gzip -t RESULTS/RQ5/csv/bowtie2_cold_task_instances.tsv.gz
+gzip -t RESULTS/RQ5/csv/bowtie2_warm_task_instances.tsv.gz
+echo '83975dd337287ca6985bf85067dba30d040b7fbf4c9e2f21244cb24cab6b85f5  RESULTS/RQ5/figures/fig_rq5_bowtie_feedback.png' |
   sha256sum -c -
 ```
 
@@ -198,6 +207,24 @@ Expected outputs:
 ```text
 RESULTS/RQ4/figures/fig_rq4_selective_audit.png
 RESULTS/RQ4/figures/fig_rq4_selective_audit.pdf
+```
+
+### RQ5 figure
+
+```bash
+rq5_figure_environment="${TMPDIR:-/tmp}/ieee-works-rq5-figures"
+python3.9 -m venv "$rq5_figure_environment"
+"$rq5_figure_environment/bin/python" -m pip install \
+  -r SCRIPTS/RQ5/figures/requirements.txt
+"$rq5_figure_environment/bin/python" \
+  SCRIPTS/RQ5/figures/generate_rq5_bowtie_feedback.py
+```
+
+Expected outputs:
+
+```text
+RESULTS/RQ5/figures/fig_rq5_bowtie_feedback.png
+RESULTS/RQ5/figures/fig_rq5_bowtie_feedback.pdf
 ```
 
 ## RQ1: audit signal and overhead
@@ -406,6 +433,20 @@ headers. Its pinned Python environment and full end-to-end commands are in
 `SCRIPTS/RQ4/README.md`; input details are in `DATA/RQ4/README.md`, and generated
 outputs belong under `RESULTS/RQ4`.
 
+## RQ5: live Bowtie2 online feedback
+
+RQ5 runs a fresh 6,000-task Bowtie2 workflow twice. The cold run begins with
+28,490 completed non-Bowtie tasks and no Bowtie2 history. Its online learner
+publishes a new model after 128 outcomes and every 128 outcomes thereafter.
+The warm run begins from the terminal 6,000-outcome cold model and history,
+without using Nextflow cache or `-resume`.
+
+The full route needs the RQ1 eBPF worker prerequisites plus the pinned Python
+modeling environment, 12 workflow workers, and one learner/controller worker.
+The initial model is rebuilt outside Git from the packaged RQ2 cohort and RQ5
+split manifest. Follow the complete ordered commands in
+[`SCRIPTS/RQ5/README.md`](SCRIPTS/RQ5/README.md).
+
 ## Reproduction levels
 
 Use the level appropriate to the available system:
@@ -418,7 +459,8 @@ Use the level appropriate to the available system:
   carry out the Sizey-versus-CAMP procedure for RQ3, or repeat the RQ4
   equal-budget selective-auditing evaluation.
 - **Re-execute workflows:** acquire the fixed workflow releases and datasets,
-  then run RQ1 Exp0/Exp1/Exp2 on the specified Slurm environment.
+  then run RQ1 Exp0/Exp1/Exp2 or the RQ5 Bowtie2 cold/warm pair on the
+  specified Slurm environment.
 
 For exact file meanings, expected row counts, commands, and checksums, continue
 with the README in the directory relevant to the selected experiment.
