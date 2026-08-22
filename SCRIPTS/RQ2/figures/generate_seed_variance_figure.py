@@ -212,8 +212,8 @@ def main() -> None:
         0.5,
         0.012,
         (
-            "Uniform APC-only process-tail CAMP; dots are independently "
-            "retrained seeds and diamonds are five-seed means."
+            "CAMP dots are independently retrained seeds; diamonds are "
+            "five-seed means."
         ),
         ha="center",
         fontsize=7.0,

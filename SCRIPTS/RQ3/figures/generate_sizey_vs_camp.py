@@ -136,6 +136,7 @@ def sizey_figure() -> None:
     ax.set_ylabel("Relative to Sizey (%)")
     ax.set_title("Capacity cost")
     clean_axis(ax)
+    ax.legend(frameon=False, loc="upper right")
     panel_label(ax, "(c)")
 
     fig.subplots_adjust(left=0.08, right=0.995, top=0.82, bottom=0.22, wspace=0.43)
