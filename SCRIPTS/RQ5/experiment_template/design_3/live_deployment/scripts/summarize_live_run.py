@@ -19,6 +19,36 @@ VARIANT_LABELS = {
     "A+P+C": "a_plus_p_plus_c",
 }
 
+ATTEMPT_EXPORT_COLUMNS = (
+    "task_id",
+    "workflow",
+    "process",
+    "version",
+    "task_instance",
+    "input_identity",
+    "decision_time",
+    "completion_time",
+    "static_input_bytes",
+    "c_hat_bytes",
+    "history_scope",
+    "history_support_count",
+    "history_confidence",
+    "model_version",
+    "allocation_source",
+    "a_point_q50_mb",
+    "a_request_mb",
+    "ap_point_q50_mb",
+    "ap_request_mb",
+    "apc_point_q50_mb",
+    "apc_request_mb",
+    "submitted_request_mb",
+    "peak_memory_bytes",
+    "consumed_bytes",
+    "runtime_seconds",
+    "oom_flag",
+    "exit_status",
+)
+
 
 def nested(item: dict[str, Any], *keys: str) -> Any:
     value: Any = item
@@ -31,22 +61,36 @@ def nested(item: dict[str, Any], *keys: str) -> Any:
 
 def decision_record(path: Path) -> dict[str, Any]:
     item = json.loads(path.read_text(encoding="utf-8"))
+    history = item["history_context"]
+    variants = item["variant_predictions"]
     record = {
         "attempt_key": path.name.removesuffix(".json"),
         "task_id": item["task_id"],
         "task_key": item["task_key"],
         "workflow": item["workflow"],
         "process": item["process"],
+        "version": item["version"],
         "task_instance": item["task_instance"],
         "input_identity": item["input_identity"],
         "attempt": int(item["attempt"]),
         "decision_time": item["decision_time"],
         "static_input_bytes": item["static_input_bytes"],
         "c_hat_bytes": item["c_hat_bytes"],
+        "history_scope": history["selected_scope"],
+        "history_support_count": history["support_count"],
+        "history_confidence": history["confidence"],
+        "model_version": item["model_version"],
         "allocation_source": item["allocation_source"],
         "workflow_cold": item["workflow_cold"],
         "applied_allocation_mib": item["recommended_allocation_mb"],
         "retry_floor_mib": item["retry_floor_mb"],
+        "a_point_q50_mb": variants["A"]["point_q50_mb"],
+        "a_request_mb": variants["A"]["allocation"]["request_mb"],
+        "ap_point_q50_mb": variants["A+P"]["point_q50_mb"],
+        "ap_request_mb": variants["A+P"]["allocation"]["request_mb"],
+        "apc_point_q50_mb": variants["A+P+C"]["point_q50_mb"],
+        "apc_request_mb": variants["A+P+C"]["allocation"]["request_mb"],
+        "submitted_request_mb": item["recommended_allocation_mb"],
     }
     for variant in VARIANTS:
         label = VARIANT_LABELS[variant]
@@ -305,6 +349,13 @@ def main() -> None:
     attempts.to_csv(
         output_dir / "task_attempts.tsv",
         sep="\t",
+        index=False,
+    )
+    attempts.loc[:, ATTEMPT_EXPORT_COLUMNS].sort_values(
+        ["decision_time", "task_id"],
+        kind="mergesort",
+    ).to_csv(
+        output_dir / "task_attempts.csv",
         index=False,
     )
 

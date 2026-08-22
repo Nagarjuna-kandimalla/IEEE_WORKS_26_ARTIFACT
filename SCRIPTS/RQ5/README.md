@@ -60,7 +60,8 @@ reference.
 
 Install the following before starting:
 
-- Linux x86-64, Python 3.9, Java 17, Nextflow, Slurm, and Apptainer;
+- Linux x86-64, Python 3.9, Java 17, Nextflow 25.10.7, Slurm, Apptainer, and
+  ripgrep (`rg`);
 - the Python packages pinned in `requirements.txt`;
 - `/usr/bin/time` on every task node;
 - BCC, matching kernel headers, and the eBPF prerequisites in
@@ -255,6 +256,12 @@ Run this in a disposable artifact copy if the retained tables must remain
 untouched:
 
 ```bash
+gzip -n -c \
+  "$cold_run/results/metrics/camp_design3/task_attempts.csv" \
+  > RESULTS/RQ5/csv/bowtie2_cold_attempts.csv.gz
+gzip -n -c \
+  "$warm_run/results/metrics/camp_design3/task_attempts.csv" \
+  > RESULTS/RQ5/csv/bowtie2_warm_attempts.csv.gz
 gzip -n -c \
   "$cold_run/results/metrics/camp_design3/task_instances.tsv" \
   > RESULTS/RQ5/csv/bowtie2_cold_task_instances.tsv.gz
