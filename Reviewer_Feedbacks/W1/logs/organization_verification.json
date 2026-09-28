@@ -1,0 +1,9 @@
+{
+  "historical_files_preserved_and_hash_verified": 118,
+  "portable_reproduction": "passed from isolated temporary copy with no sibling repository",
+  "paper_result_files_identical_after_relocation": true,
+  "paper_reproduction_runs_for_this_organization": 2,
+  "new_model_training_runs": 0,
+  "bootstrap_runs": 0,
+  "manuscript_modified": false
+}

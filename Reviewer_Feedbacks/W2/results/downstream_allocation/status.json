@@ -1,0 +1,13 @@
+{
+  "validation_only": false,
+  "partial": false,
+  "cohorts": [
+    "rq4"
+  ],
+  "completed_pairs": 25,
+  "missing_pairs": [],
+  "fingerprint": "c8a7628af0469e8d6c501f01c8483fda71542bf698cb3d22223b45bedaa078df",
+  "scientific_status": "Preliminary; extreme requests remain under investigation.",
+  "interval_scope": "Bootstrap of five sampling-seed means on a fixed cohort; original bootstrap draw order preserved.",
+  "memory_matching": "Per-batch analytical request-only scaling; fractional MiB in normalized comparison."
+}

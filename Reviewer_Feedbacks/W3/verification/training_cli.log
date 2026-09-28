@@ -1,0 +1,10 @@
+usage: fresh_training.py [-h] [--threads THREADS] destination
+
+Train both primary signal arms from frozen histories in a new directory.
+
+positional arguments:
+  destination
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --threads THREADS

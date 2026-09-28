@@ -1,0 +1,88 @@
+{
+  "experiment_name": "sizey_vs_camp_offline_replay",
+  "source_data": "../../../data/generated/canonical_matched_tasks.tsv",
+  "sizey_source": "../source_sizey",
+  "primary_cohort": {
+    "require_runtime": true,
+    "minimum_process_rows": 34,
+    "expected_rows": 30478,
+    "expected_processes": 14,
+    "expected_workflows": 6
+  },
+  "extended_prediction_cohort": {
+    "require_runtime": false,
+    "minimum_process_rows": 34,
+    "expected_rows": 33478,
+    "expected_processes": 15,
+    "expected_workflows": 6
+  },
+  "fields": {
+    "identity": "logical_task_id",
+    "group": "process",
+    "a_for_sizey": "static_input_bytes",
+    "target_peak_bytes": "peak_memory_bytes",
+    "runtime_seconds": "runtime_seconds",
+    "consumed_bytes": "ebpf_total_consumed_bytes",
+    "consumed_formula": "ebpf_read_return_bytes + ebpf_mmap_page_fault_bytes"
+  },
+  "split": {
+    "scope": "per_process",
+    "test_size": 0.7,
+    "primary_seed": 1996,
+    "robustness_seeds": [
+      1996,
+      1997,
+      1998,
+      1999,
+      2000
+    ]
+  },
+  "sizey": {
+    "modify_source": false,
+    "alpha": 0.0,
+    "softmax": true,
+    "error_metric": "smoothed_mape",
+    "use_online_grid": false,
+    "offset_strategy": "DYNAMIC",
+    "underprediction_strategy": "MAX_EVER_OBSERVED"
+  },
+  "camp": {
+    "feature_views": [
+      "A",
+      "A+P",
+      "A+P+C"
+    ],
+    "model_family": "lightgbm_quantile",
+    "model_seed": 20260728,
+    "quantiles": [
+      0.975,
+      0.99,
+      0.995
+    ],
+    "ensemble_reducer": "median",
+    "calibration": {
+      "method": "global_additive_residual",
+      "quantile": 0.995,
+      "fit_on_test": false,
+      "crossfit_folds": 5,
+      "crossfit_group": "workflow_plus_split_group_id",
+      "final_fit": "all_initial_rows"
+    },
+    "history_contract": "design2_g0_g4_plus_task_instance_and_input",
+    "model_update_during_test": false,
+    "history_update_after_each_test_task": true
+  },
+  "selective_audit": {
+    "budgets": [
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0
+    ],
+    "baselines": [
+      "uniform_random",
+      "stratified_random"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "started_utc": "2026-09-28T21:37:32.637659+00:00",
+  "completed_utc": "2026-09-28T21:37:54.472784+00:00",
+  "python": "3.9.25 (main, Jul 15 2026, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)]",
+  "platform": "Linux-6.18.48-107.148.amzn2023.x86_64-x86_64-with-glibc2.34",
+  "numpy": "1.26.4",
+  "pandas": "2.3.3",
+  "input_checksums_verified": 19,
+  "original_result_validation": "passed",
+  "pre_organization_results_match": true,
+  "manuscript_values_match": true,
+  "training_rerun": false,
+  "bootstrap_performed": false,
+  "plots_generated": false,
+  "analysis_sha256": "3ef0b34d8b37f150016cc1b6dca28ed05629c078b49f65f1d678102ba3e498be",
+  "protocol_sha256": "1ea1ac6729d286b8a78eaa5e66d997cb56031f40b5b5092ba5874c20bd943e3b"
+}

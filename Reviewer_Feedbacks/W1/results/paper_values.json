@@ -1,0 +1,19 @@
+{
+  "access_factor": "1.315",
+  "access_budget_gib": "34,277.55",
+  "access_underallocations": 2,
+  "camp_access_underallocations": 31,
+  "camp_unused_gib_hours": "39.87",
+  "access_unused_gib_hours": "143.19",
+  "unused_reduction_pct": "72.2",
+  "sizey_factor": "2.2546",
+  "sizey_budget_gib": "79,049.42",
+  "camp_sizey_underallocations": 287,
+  "sizey_underallocations": 1119,
+  "underallocation_reduction_pct": "74.4",
+  "coverage_pct": "95.004",
+  "matched_underallocations": 1066,
+  "camp_coverage_budget_gib": "77,818.52",
+  "sizey_coverage_budget_gib": "93,357.81",
+  "memory_reduction_pct": "16.6"
+}

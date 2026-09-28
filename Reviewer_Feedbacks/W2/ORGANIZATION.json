@@ -1,0 +1,65 @@
+{
+  "organized_utc": "2026-09-28T21:19:25.798086+00:00",
+  "moves": [
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/inputs/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/inputs/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/prepared/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/prepared/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/prepared_smoke/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/prepared_smoke/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/runs/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/runs/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/runs_smoke/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/runs_smoke/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/bundle",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/bundle"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/launch",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/launch"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/logs",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/logs"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/validation",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/validation"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2/results",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/results"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/validation/runs_before_parallel_validation/rq2",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/validation/runs_before_parallel_validation/rq2"
+    },
+    {
+      "from": "/work/Reviewer_Feedbacks_WORKS/R3_W2_not_needed/original_combined_records/validation/runs_before_parallel_validation/rq4",
+      "to": "/work/Reviewer_Feedbacks_WORKS/R3_W2/validation/runs_before_parallel_validation/rq4"
+    }
+  ],
+  "active_cohort": "rq4",
+  "archived_cohort": "rq2",
+  "scientific_sources_unchanged": true,
+  "model_retraining": false,
+  "verification": {
+    "original_fingerprint_preserved": true,
+    "per_repetition_metrics_unchanged": true,
+    "paired_summary_unchanged": true,
+    "comparison_tolerance": 1e-12,
+    "paired_runs_per_cohort": 25,
+    "no_training_performed": true
+  }
+}

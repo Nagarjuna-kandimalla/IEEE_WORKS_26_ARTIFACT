@@ -1,0 +1,70 @@
+--- /work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ2/common.py
++++ /work/Reviewer_Feedbacks_WORKS/R3_W3/mmap_ablation/pipeline/common.py
+@@ -5,6 +5,9 @@
+ import hashlib
+ import json
+ import math
++import os
++import copy
++from functools import lru_cache
+ from pathlib import Path
+ from typing import Any, Iterable
+ 
+@@ -18,9 +21,24 @@
+ GIB = 1024.0**3
+ 
+ 
+-def load_config() -> dict[str, Any]:
++@lru_cache(maxsize=1)
++def _frozen_config() -> dict[str, Any]:
+     with CONFIG_PATH.open(encoding="utf-8") as handle:
+         return json.load(handle)
++
++
++def load_config() -> dict[str, Any]:
++    # The experiment configuration is frozen before launching a run. Return a
++    # separate copy, retaining the original caller isolation without reopening
++    # the same file for every calibration task/candidate.
++    config = copy.deepcopy(_frozen_config())
++    config["consumed_target"] = "ablation_consumed_bytes"
++    config["signal_mode"] = os.environ.get("CAMP_SIGNAL_MODE", "read_mmap")
++    config["consumed_formula"] = (
++        "ebpf_read_return_bytes" if config["signal_mode"] == "read"
++        else "ebpf_read_return_bytes + ebpf_mmap_page_fault_bytes"
++    )
++    return config
+ 
+ 
+ def resolve_config_path(value: str | Path) -> Path:
+--- /work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ2/history.py
++++ /work/Reviewer_Feedbacks_WORKS/R3_W3/mmap_ablation/pipeline/history.py
+@@ -145,7 +145,7 @@
+         self.vectors.append(np.asarray(vector, dtype=float))
+         self.task_ids.append(str(row["logical_task_id"]))
+         self.peak.append(float(row["peak_memory_bytes"]))
+-        self.consumed.append(float(row["ebpf_total_consumed_bytes"]))
++        self.consumed.append(float(row[load_config()["consumed_target"]]))
+         self.static_input.append(max(float(row["static_input_bytes"]), 1.0))
+         if keys["i0"] is not None:
+             self.by_exact[keys["i0"]].append(index)
+--- /work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ2/modeling.py
++++ /work/Reviewer_Feedbacks_WORKS/R3_W3/mmap_ablation/pipeline/modeling.py
+@@ -75,6 +75,7 @@
+     _history_model_column(column) for column in CONSUMED_HISTORY_COLUMNS
+ ) + ("log1p_c_hat_bytes",)
+ FORBIDDEN_CURRENT_COLUMNS = {
++    "ablation_consumed_bytes",
+     "peak_memory_bytes",
+     "ebpf_total_consumed_bytes",
+     "ebpf_read_return_bytes",
+--- /work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ2/run_offline_experiment.py
++++ /work/Reviewer_Feedbacks_WORKS/R3_W3/mmap_ablation/pipeline/run_offline_experiment.py
+@@ -186,7 +186,7 @@
+                 else np.full(len(test), np.nan)
+             ),
+             "actual_consumed_bytes": pd.to_numeric(
+-                test["ebpf_total_consumed_bytes"], errors="raise"
++                test[load_config()["consumed_target"]], errors="raise"
+             ).to_numpy(),
+             "actual_peak_mib": actual,
+             "runtime_seconds": pd.to_numeric(

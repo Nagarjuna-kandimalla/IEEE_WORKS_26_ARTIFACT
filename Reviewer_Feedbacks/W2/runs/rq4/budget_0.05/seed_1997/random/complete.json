@@ -1,0 +1,10 @@
+{
+  "fingerprint": "c8a7628af0469e8d6c501f01c8483fda71542bf698cb3d22223b45bedaa078df",
+  "cohort": "rq4",
+  "budget": 0.05,
+  "seed": 1997,
+  "method": "random",
+  "tasks": 21337,
+  "audit_count": 1067,
+  "smoke": false
+}

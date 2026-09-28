@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "comparison": "25 paired budget/seed runs; all regenerated table values match",
+  "selective_mean_underallocations": 265.8,
+  "random_mean_underallocations": 305.8,
+  "reduction_pct": 13.080444735120988,
+  "more_requested_memory_pct": 2.4033705487285673,
+  "verification_level": "reaggregation of recorded task outcomes; no model retraining"
+}

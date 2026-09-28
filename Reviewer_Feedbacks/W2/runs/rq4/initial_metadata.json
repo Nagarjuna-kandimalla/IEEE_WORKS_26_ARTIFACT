@@ -1,0 +1,14 @@
+{
+  "model": {
+    "training_rows": 5486,
+    "consumption_training_rows": 5486,
+    "process_models": 14,
+    "seconds": 13.699895765000008
+  },
+  "gates": {
+    "risk_positives": 27,
+    "gate_training_rows": 1819,
+    "degenerate_models": []
+  },
+  "fingerprint": "c8a7628af0469e8d6c501f01c8483fda71542bf698cb3d22223b45bedaa078df"
+}

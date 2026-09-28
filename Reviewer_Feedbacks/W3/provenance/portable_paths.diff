@@ -1,0 +1,33 @@
+--- provenance/run_arm.original.py
++++ scripts/run_arm.py
+@@ -39,7 +39,7 @@
+     if (destination / 'READY.json').exists():
+         return destination
+     rows = load_experiment_rows(1996, split_seed=1996)
+-    source = pd.read_csv('/work/IEEE_WORKS_26_ARTIFACT/DATA/RQ2/camp_ml_cohort_33516.csv.gz')
++    source = pd.read_csv(ROOT/'inputs/camp_ml_cohort_33516.csv.gz')
+     pd.testing.assert_frame_equal(
+         source.sort_values('logical_task_id').reset_index(drop=True),
+         rows[source.columns].sort_values('logical_task_id').reset_index(drop=True),
+@@ -74,7 +74,7 @@
+     os.environ['CAMP_REPLICATE_SEED']=str(args.seed)
+     destination=prepare(args.mode)
+     if args.prepare_only:return
+-    output=ROOT/'results'/args.mode/f'seed_{args.seed}'
++    output=ROOT/'runs'/args.mode/f'seed_{args.seed}'
+     models=ROOT/'models'/args.mode/f'seed_{args.seed}'
+     output.mkdir(parents=True,exist_ok=True)
+     models.mkdir(parents=True,exist_ok=True)
+--- provenance/experiment.original.json
++++ pipeline/config/experiment.json
+@@ -1,8 +1,8 @@
+ {
+   "experiment_name": "camp_rq2_offline_experiment",
+-  "source_data": "/work/Reviewer_Feedbacks_WORKS/R3_W3/mmap_ablation/data/canonical_matched_tasks.tsv",
++  "source_data": "../data/canonical_matched_tasks.tsv.gz",
+   "source_split_manifest": "data/split_manifest_primary.tsv",
+-  "split_manifest_root": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ2/data/split_manifests",
++  "split_manifest_root": "../inputs/split_manifests",
+   "seed": 1996,
+   "variance_seeds": [
+     1996,

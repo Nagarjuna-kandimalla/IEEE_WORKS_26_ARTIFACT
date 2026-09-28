@@ -1,0 +1,21 @@
+{
+  "elapsed_seconds": 442.69082260131836,
+  "history_contract": "artifact warm leave-one-out development; sequential test",
+  "host": "mempred-elastic-16cpu",
+  "mdape_pct": 22.040103494739515,
+  "model_seeds": [
+    20260728,
+    20260729,
+    20260730
+  ],
+  "n_jobs": 8,
+  "omitted_work": "A+P comparator and unused consumed-to-RSS diagnostic fits; neither feeds APC predictions",
+  "prediction_sha256": "e58a45733eb4d293ee33fcdb44fdeabc6300052370344e540a9d4fd17ad7c9a6",
+  "request_gib": 41852.63671875,
+  "seed": 1996,
+  "signal": "read",
+  "split_seed": 1996,
+  "test_rows": 5026,
+  "train_rows": 28490,
+  "underallocations": 32
+}

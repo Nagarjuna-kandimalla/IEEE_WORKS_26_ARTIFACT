@@ -1,0 +1,62 @@
+[
+  {
+    "batch": 0,
+    "seconds": 39.761971787999755,
+    "audited": 427,
+    "tasks": 4270,
+    "model": {
+      "training_rows": 8902,
+      "consumption_training_rows": 5839,
+      "process_models": 14,
+      "seconds": 20.37448147499981
+    }
+  },
+  {
+    "batch": 1,
+    "seconds": 44.31702598999982,
+    "audited": 427,
+    "tasks": 4270,
+    "model": {
+      "training_rows": 12318,
+      "consumption_training_rows": 6173,
+      "process_models": 14,
+      "seconds": 23.517751272999703
+    }
+  },
+  {
+    "batch": 2,
+    "seconds": 49.798808202000146,
+    "audited": 427,
+    "tasks": 4266,
+    "model": {
+      "training_rows": 15734,
+      "consumption_training_rows": 6523,
+      "process_models": 14,
+      "seconds": 27.107453392000025
+    }
+  },
+  {
+    "batch": 3,
+    "seconds": 52.01592373400035,
+    "audited": 427,
+    "tasks": 4266,
+    "model": {
+      "training_rows": 19150,
+      "consumption_training_rows": 6865,
+      "process_models": 14,
+      "seconds": 32.12306788199976
+    }
+  },
+  {
+    "batch": 4,
+    "seconds": 19.59411634700018,
+    "audited": 426,
+    "tasks": 4265,
+    "model": {
+      "training_rows": 19150,
+      "consumption_training_rows": 6865,
+      "process_models": 14,
+      "seconds": 32.12306788199976
+    }
+  }
+]

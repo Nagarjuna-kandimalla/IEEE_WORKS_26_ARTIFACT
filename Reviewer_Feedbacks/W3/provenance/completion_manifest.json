@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "utc": "2026-09-28T02:27:42.249730+00:00",
+  "slurm_job": 23,
+  "job_exit_code": "0:0",
+  "job_wall_time": "00:43:27",
+  "training_runs": 10,
+  "additional_training_after_analysis": false,
+  "artifact_git_status": "clean",
+  "s3_access_used": false,
+  "figure_visually_checked": true,
+  "files_sha256": {
+    "scripts/analyze_results.py": "a4885f4afa50b8e7f45b0261c51a8da0833220708275635991e0388c69c3d5b5",
+    "scripts/audit_history_reference.py": "cc09673194812bfbd766120d0a50b50329f9f6bfb4c1fb3c7f99ba3ac5dd9507",
+    "scripts/check_reproduction.py": "f675689e390071faec6d4939b77610f15d5c45044427dc6bde6836369f9213b1",
+    "scripts/run_arm.py": "e94f445eeec7c29295514bc9edbc11f20af8380358578ae817ce3d91e013c262",
+    "scripts/validate_completed.py": "0202efa4874b8caa126c1896258007d8fe9638632ca086eeb0181099fcd15728",
+    "scripts/validate_features.py": "63d1cfb4cb7e038dc8486d91d8e3d74af1867706fbde849b7ff600f486e9b151",
+    "protocol.json": "c289d4ccaefa687b289afa149b0babcc546642070a3ed608a729afa29141420e",
+    "results/final_validation.json": "a1b23cb64333ee13c8e13884e2b3d37c61b6e9b4ebe752c911a88cfbe7b7f0db",
+    "RESULTS.md": "594b8598750de27737e6e8f24fa01865922bf1c3bd8952dc33a3a5eb29b27506",
+    "figures/mmap_ablation.pdf": "ad7aed0f7af0c6a011d93edf5da20a9498c9230ea9c22048a04213e2a8b385ec"
+  }
+}

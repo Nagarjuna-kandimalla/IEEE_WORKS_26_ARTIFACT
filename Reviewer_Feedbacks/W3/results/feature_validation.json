@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "allowed_changes": "consumption definition and consumption-history summaries only",
+  "raw_measurements_preserved": true,
+  "task_ids_and_non_consumption_features_identical": true
+}

@@ -1,0 +1,23 @@
+Verified rq4: 9 input/source hashes, assignments and original code fingerprint.
+test_all_observed_matches_artifact_history (test_contract.ContractTests) ... ok
+test_current_outcomes_cannot_change_snapshot (test_contract.ContractTests) ... ok
+test_equal_workflow_quotas_and_boundary_budgets (test_contract.ContractTests) ... ok
+test_hidden_consumption_does_not_affect_history (test_contract.ContractTests) ... ok
+test_matching_does_not_read_actual_peak (test_contract.ContractTests) ... ok
+test_no_audit_means_missing_not_zero (test_contract.ContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.342s
+
+OK
+Verified rq4: 9 input/source hashes, assignments and original code fingerprint.
+Validated 25 paired runs and generated rq4-only results. No model fitting performed.
+{
+  "status": "passed",
+  "comparison": "25 paired budget/seed runs; all regenerated table values match",
+  "selective_mean_underallocations": 265.8,
+  "random_mean_underallocations": 305.8,
+  "reduction_pct": 13.080444735120988,
+  "more_requested_memory_pct": 2.4033705487285673,
+  "verification_level": "reaggregation of recorded task outcomes; no model retraining"
+}

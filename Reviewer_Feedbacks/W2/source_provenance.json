@@ -1,0 +1,35 @@
+{
+  "artifact_root_at_preparation": "/work/IEEE_WORKS_26_ARTIFACT",
+  "artifact_git_commit": "d6e1b8f910dd4136c601641ab61a804601d12227",
+  "vendored_sources": {
+    "vendor/calibration.py": {
+      "source": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ4/scripts/calibration.py",
+      "sha256": "35c2947867e293f626302b09548cdb58aa6d09662b71b2530bb8f447819739b9"
+    },
+    "vendor/common.py": {
+      "source": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ4/scripts/common.py",
+      "sha256": "089213fd9795ac4b356f293770de56ef6c780b643157bb9e723ca06aafb82545"
+    },
+    "vendor/history.py": {
+      "source": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ4/scripts/history.py",
+      "sha256": "e199531d6abded01770d1821caeb2b8b64e62cac7a8a5dafbcb5c604cb52e513"
+    },
+    "vendor/modeling.py": {
+      "source": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ4/scripts/modeling.py",
+      "sha256": "61fac127236818f635514e53cf8ecaeeafc6d08e2ec1b307ed19878d1cf02a0c"
+    },
+    "vendor/selective_gates.py": {
+      "source": "/work/IEEE_WORKS_26_ARTIFACT/SCRIPTS/RQ4/scripts/selective_gates.py",
+      "sha256": "080024941ae1e472f3f9bdf1f31a5c9b28c073f9785eaeaa2eab81a190fbdabf"
+    }
+  },
+  "prepared_from_local_files_only": true,
+  "s3_access": false,
+  "used_artifact_files_match_git_commit": true,
+  "input_sources": {
+    "inputs/rq2/camp_ml_cohort_33516.csv.gz": "DATA/RQ2/camp_ml_cohort_33516.csv.gz",
+    "inputs/rq2/*_1996.tsv": "SCRIPTS/RQ2/data/split_manifests/*_1996.tsv",
+    "inputs/rq4/initial_causal_features.tsv.gz": "DATA/RQ4/inputs/seed_1996/initial_causal_features.tsv.gz",
+    "inputs/rq4/test_causal_features.tsv.gz": "DATA/RQ4/inputs/seed_1996/test_causal_features.tsv.gz"
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "processes": {
+    "gatk::HaplotypeCaller": {
+      "elapsed_seconds": 2.327169179916382,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 425,
+      "unique_split_groups": 17,
+      "view": "A+P+C"
+    },
+    "minimap2::BUILD_INDEX": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "minimap2::FLAGSTAT_BAM": {
+      "elapsed_seconds": 7.450921297073364,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1275,
+      "unique_split_groups": 1275,
+      "view": "A+P+C"
+    },
+    "minimap2::GENERATE_WINDOW_READS": {
+      "elapsed_seconds": 3.3025941848754883,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1275,
+      "unique_split_groups": 1275,
+      "view": "A+P+C"
+    },
+    "minimap2::INDEX_BAM": {
+      "elapsed_seconds": 6.932687520980835,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1275,
+      "unique_split_groups": 1275,
+      "view": "A+P+C"
+    },
+    "minimap2::MAP_WINDOW": {
+      "elapsed_seconds": 7.205702781677246,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1275,
+      "unique_split_groups": 1275,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:PREPARE_INTERVALS:CREATE_INTERVALS_BED": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:PREPARE_INTERVALS:TABIX_BGZIPTABIX_INTERVAL_COMBINED": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:PREPARE_INTERVALS:TABIX_BGZIPTABIX_INTERVAL_SPLIT": {
+      "elapsed_seconds": 4.208475589752197,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1495,
+      "unique_split_groups": 1495,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:BAM_VARIANT_CALLING_GERMLINE_ALL:BAM_VARIANT_CALLING_HAPLOTYPECALLER:GATK4_HAPLOTYPECALLER": {
+      "elapsed_seconds": 2.8914475440979004,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 601,
+      "unique_split_groups": 601,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:CRAM_SAMPLEQC:CRAM_QC_RECAL:MOSDEPTH": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:CRAM_SAMPLEQC:CRAM_QC_RECAL:SAMTOOLS_STATS": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQC": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_APPLYBQSR:CRAM_MERGE_INDEX_SAMTOOLS:INDEX_CRAM": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_APPLYBQSR:CRAM_MERGE_INDEX_SAMTOOLS:MERGE_CRAM": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_APPLYBQSR:GATK4_APPLYBQSR": {
+      "elapsed_seconds": 3.9556612968444824,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1495,
+      "unique_split_groups": 1495,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_BASERECALIBRATOR:GATK4_BASERECALIBRATOR": {
+      "elapsed_seconds": 2.015742063522339,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 1495,
+      "unique_split_groups": 1495,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_BASERECALIBRATOR:GATK4_GATHERBQSRREPORTS": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_MARKDUPLICATES:CRAM_QC_MOSDEPTH_SAMTOOLS:MOSDEPTH": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_MARKDUPLICATES:CRAM_QC_MOSDEPTH_SAMTOOLS:SAMTOOLS_STATS": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:BAM_MARKDUPLICATES:GATK4_MARKDUPLICATES": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:FASTP": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "sarek::NFCORE_SAREK:SAREK:FASTQ_PREPROCESS_GATK:FASTQ_ALIGN:BWAMEM1_MEM": {
+      "elapsed_seconds": 0.3389739990234375,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 12,
+      "unique_split_groups": 12,
+      "view": "A+P+C"
+    },
+    "seqinspector::NFCORE_SEQINSPECTOR:SEQINSPECTOR:FASTQ_QC_PHYLOGENETIC:KRAKEN2_KRAKEN2": {
+      "elapsed_seconds": 9.380747556686401,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 2550,
+      "unique_split_groups": 2550,
+      "view": "A+P+C"
+    },
+    "seqinspector::NFCORE_SEQINSPECTOR:SEQINSPECTOR:FASTQ_QC_PHYLOGENETIC:KRONA_KTIMPORTTAXONOMY": {
+      "elapsed_seconds": 11.59179973602295,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 2550,
+      "unique_split_groups": 2550,
+      "view": "A+P+C"
+    },
+    "seqinspector::UNTAR_KRAKEN2DB": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "taxprofiler::NFCORE_TAXPROFILER:TAXPROFILER:PROFILING:KRAKEN2_KRAKEN2": {
+      "elapsed_seconds": 10.627103567123413,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 5098,
+      "unique_split_groups": 5098,
+      "view": "A+P+C"
+    },
+    "taxprofiler::NFCORE_TAXPROFILER:TAXPROFILER:UNTAR": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    },
+    "viralmetagenome::NFCORE_VIRALMETAGENOME:VIRALMETAGENOME:FASTQ_KRAKEN_KAIJU:KRAKEN2_KRAKEN2": {
+      "elapsed_seconds": 9.341307878494263,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 2551,
+      "unique_split_groups": 2551,
+      "view": "A+P+C"
+    },
+    "viralmetagenome::NFCORE_VIRALMETAGENOME:VIRALMETAGENOME:FASTQ_KRAKEN_KAIJU:KRAKENTOOLS_KREPORT2KRONA": {
+      "elapsed_seconds": 6.694921016693115,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 2551,
+      "unique_split_groups": 2551,
+      "view": "A+P+C"
+    },
+    "viralmetagenome::NFCORE_VIRALMETAGENOME:VIRALMETAGENOME:FASTQ_KRAKEN_KAIJU:KRONA_CLEANUP": {
+      "elapsed_seconds": 8.95081114768982,
+      "folds": 5,
+      "model_seeds": [
+        20260728,
+        20260729,
+        20260730
+      ],
+      "oof_scope": "per_process",
+      "quantiles": [
+        0.9,
+        0.95,
+        0.99,
+        0.995
+      ],
+      "rows": 2551,
+      "unique_split_groups": 2551,
+      "view": "A+P+C"
+    },
+    "viralmetagenome::NFCORE_VIRALMETAGENOME:VIRALMETAGENOME:UNPACK_DB:UNTAR_DB": {
+      "oof_scope": "global_fallback_for_single_parent_group",
+      "rows": 1,
+      "unique_split_groups": 1,
+      "view": "A+P+C"
+    }
+  },
+  "quantiles": [
+    0.9,
+    0.95,
+    0.99,
+    0.995
+  ],
+  "scope": "per_process",
+  "view": "A+P+C"
+}

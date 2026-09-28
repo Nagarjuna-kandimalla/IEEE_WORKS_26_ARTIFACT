@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-09-27T20:41:13.675937+00:00",
+  "design": "retrospective controlled reanalysis of original frozen predictions",
+  "data_seed": 1996,
+  "budget": "CAMP native sum of first requests",
+  "multiplier": "sum(CAMP request) / sum(baseline request)",
+  "request_rounding": "none; continuous offline counterfactual",
+  "native_history": "held fixed; no counterfactual retry/history replay",
+  "rq2_runtime": "original fillna(0.0), retain all 5026 tasks; disclose 449 missing",
+  "rq3_runtime": "original positive-runtime eligible cohort",
+  "scope": "Reproduce only the W1 numerical comparisons reported in Sections IV and V of the eight-page editorial paper, from original frozen predictions. Original experiments are not retrained.",
+  "source_artifact": "inputs/original_artifact",
+  "archived_prediction_source": "/work/mempred-restored-readonly/FINAL_WORKS_SUBMISSION_CODE/results/rq4_sizey/comparison/matched_task_predictions.tsv.gz",
+  "reported_comparisons": [
+    "Access versus CAMP at equal total first requests, including recorded unused memory-time",
+    "Sizey versus CAMP at equal total first requests",
+    "Sizey versus CAMP at minimum 95% observed coverage"
+  ],
+  "coverage_target": 0.95,
+  "coverage_matching": "Minimum empirical peak/request budget threshold covering ceil(0.95*N) tasks; one multiplier per method, applied to all requests.",
+  "organization_date": "2026-09-28"
+}

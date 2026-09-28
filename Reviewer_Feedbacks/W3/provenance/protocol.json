@@ -1,0 +1,49 @@
+{
+  "status": "frozen_before_training",
+  "signal_arms": [
+    "read",
+    "read_mmap"
+  ],
+  "split_seed": 1996,
+  "replicate_seeds": [
+    1996,
+    1997,
+    1998,
+    1999,
+    2000
+  ],
+  "n_jobs": 8,
+  "parallel_arms": 2,
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 20260928,
+  "budget": "full-CAMP native aggregate request per seed; continuous scalar diagnostic",
+  "prediction_metrics": [
+    "q50_mdape_pct",
+    "mean_pinball_mib_across_5_quantiles"
+  ],
+  "primary_allocation_metric": "underallocation_rate_at_matched_total_request",
+  "validation_amendment": "Prior independent worker control already showed 30 versus packaged 31 underallocations. Require full prediction-vector agreement with either packaged output or prior worker control; record both comparisons. Investigate any other discrepancy before proceeding.",
+  "code_simplification": "Fit only APC and its proxy, global and local ensembles. Omit independent AP comparator and unused consumed-to-RSS diagnostic fits. No change to APC feature selection, modeling or calibration.",
+  "source_hashes": {
+    "pipeline/calibration.py": "35c2947867e293f626302b09548cdb58aa6d09662b71b2530bb8f447819739b9",
+    "pipeline/common.py": "af522079734fd3cfe56d727c916b8464722faf6106582c5a92bb67f55e8111c6",
+    "pipeline/history.py": "900e599141158d3b953b138aa158f9c0d9b35dd2fc33b4409ace4b10a9eaaa5a",
+    "pipeline/modeling.py": "96dd823f66cae3b8ed758c9b7aa819a17e83468c47e1bab9ac9eb18140c10eb6",
+    "pipeline/run_offline_experiment.py": "0c6f60aa8003a5782981fffb22641d2c0125eb8f84b0649d556de77c9a3267a6"
+  },
+  "tsv_handoff": "Use TSV serialization/parsing before the global memory stage and before the local-tail stage, matching the retained independently executed worker control. Identical handoff in both signal arms.",
+  "runner_sha256": "e94f445eeec7c29295514bc9edbc11f20af8380358578ae817ce3d91e013c262",
+  "history_preparation": "Generate both arm histories on the controller; identical cache for all seeds. Worker-generated nearest-neighbour histories differed from prior controller-prepared history before training (diagnostic preserved).",
+  "history_reference_check": "Controller-generated full histories match prior retained histories within rtol=1e-10, atol=1e-8; both arms identical on all non-consumption features.",
+  "prepared_history_hashes": {
+    "data/read/READY.json": "e262e4313424175d16a17510a76b65ab305aa75c67bbb0ee71c613c3271de1d8",
+    "data/read/initial.pkl": "1f28a1af1adf698c64150f9f254e0d7e40581f53c9c96eed9cd33c7538081d81",
+    "data/read/scaler.joblib": "38493559a37e9ffcd49a2638c9570297d54b587c361611813395716ae463b4e9",
+    "data/read/test.pkl": "232e124e08e99186d31b4e6a324b296181f43326dec835ccf4a87340e092f6e0",
+    "data/read_mmap/READY.json": "7c6348e3ac726e46085607199c42d7b2adad9a8e89e30cff92391be782aa59bb",
+    "data/read_mmap/initial.pkl": "190fa2d513575098109d81cc727560dc0eb50223797cb32a6d26cfc6c2db1427",
+    "data/read_mmap/scaler.joblib": "38493559a37e9ffcd49a2638c9570297d54b587c361611813395716ae463b4e9",
+    "data/read_mmap/test.pkl": "ab5298df8f594a8d199329fa726747f89c26dd02634f43834c0a10a3c5718c0f"
+  },
+  "configuration_cache": "Frozen file is cached within each process; deep copies preserve caller isolation. Tested identical values for both modes."
+}

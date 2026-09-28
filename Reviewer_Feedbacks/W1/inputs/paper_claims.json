@@ -1,0 +1,40 @@
+{
+  "paper": "8-page editorial version, 2026-09-28",
+  "passages": {
+    "R3-W1-ACCESS-METHOD": {
+      "source": "/work/Final_Camera_Ready_IEEE_WORKS_26/source/WORKS_Camera_Ready/4_experimental_method.tex",
+      "latex": "\\noindent\\textbf{Equal-budget control.} Retrospectively, every Access\nfirst request on the primary holdout is multiplied by\n$k=\\sum_t\\hat y_t^{\\mathrm{CAMP}}/\\sum_t\\hat y_t^{\\mathrm{Access}}$.\nScaling uses requests alone; predictions, histories, peaks, and the runtime\nconvention remain fixed. We compare underallocations and recorded unused\nmemory-time."
+    },
+    "R3-W1-SIZEY-METHOD": {
+      "source": "/work/Final_Camera_Ready_IEEE_WORKS_26/source/WORKS_Camera_Ready/4_experimental_method.tex",
+      "latex": "\\noindent\\textbf{Matched operating points.} We apply the equal-budget rule\nto Sizey. We also compare total requests across all tasks after applying each method's\nsmallest uniform multiplier achieving at least 95\\% observed coverage."
+    },
+    "R3-W1-ACCESS-RESULT": {
+      "source": "/work/Final_Camera_Ready_IEEE_WORKS_26/source/WORKS_Camera_Ready/5_results.tex",
+      "latex": "\\noindent\\textbf{Equal-budget comparison.} Scaling Access by 1.315 matches\n\\toolname{}'s 34,277.55~GiB budget and yields 2 underallocations versus\n\\toolname{}'s 31.\n\\toolname{} uses 39.87 versus 143.19~GiB-hours of recorded unused memory-time\n(72.2\\% less), showing a coverage--memory-time tradeoff."
+    },
+    "R3-W1-SIZEY-RESULT": {
+      "source": "/work/Final_Camera_Ready_IEEE_WORKS_26/source/WORKS_Camera_Ready/5_results.tex",
+      "latex": "\\noindent\\textbf{Matched operating-point comparison.} Scaling Sizey by\n2.2546 matches \\toolname{}'s 79,049.42~GiB budget. \\toolname{} underallocates\n287 tasks versus 1,119 (74.4\\% fewer). At 95.004\\% coverage (1,066\nunderallocations each), \\toolname{} requests 77,818.52 versus\n93,357.81~GiB (16.6\\% less). These operating points show fewer\nunderallocations at equal budget and less memory at matched coverage."
+    }
+  },
+  "expected_display": {
+    "access_factor": "1.315",
+    "access_budget_gib": "34,277.55",
+    "access_underallocations": 2,
+    "camp_access_underallocations": 31,
+    "camp_unused_gib_hours": "39.87",
+    "access_unused_gib_hours": "143.19",
+    "unused_reduction_pct": "72.2",
+    "sizey_factor": "2.2546",
+    "sizey_budget_gib": "79,049.42",
+    "camp_sizey_underallocations": 287,
+    "sizey_underallocations": 1119,
+    "underallocation_reduction_pct": "74.4",
+    "coverage_pct": "95.004",
+    "matched_underallocations": 1066,
+    "camp_coverage_budget_gib": "77,818.52",
+    "sizey_coverage_budget_gib": "93,357.81",
+    "memory_reduction_pct": "16.6"
+  }
+}

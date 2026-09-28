@@ -1,0 +1,69 @@
+{
+  "status": "prepared_inputs_only",
+  "files": {
+    "config/experiment.json": "1e4a9219b24c9aaf5a40911c18e7efa1ee932eb42a8bb16b4f50963c88b224d1",
+    "inputs/rq2/camp_ml_cohort_33516.csv.gz": "2e10cc5e14ddc762be23ede8e6755d9a815cd8527d43ef01ad44c37dd01a52ef",
+    "inputs/rq2/gatk_1996.tsv": "58007be17c2d17522293f04d94c50b5a0006b7887f61716ea5a2d738a31c48c2",
+    "inputs/rq2/minimap2_1996.tsv": "fcf76fdaca900539e071e58f49ecb8cc404509bc660f21717bdfade097183c04",
+    "inputs/rq2/sarek_1996.tsv": "eed75eb5962aa1fdfdc59eac60ad9165aeffe8a75f016245f15d21a851a42672",
+    "inputs/rq2/seqinspector_1996.tsv": "31b8edc8383a624b1ba38779a661f3fcacc0b292cd3ab9474c2dba30bd508245",
+    "inputs/rq2/taxprofiler_1996.tsv": "5dc0d967df63e2c1ccfac9b31613ef09188763255af825c4527f437f4f2be8c9",
+    "inputs/rq2/viralmetagenome_1996.tsv": "796138fd49fa0afedf2a5d10a3fb58013ed0cc131226a45417f5f698fa4382fb",
+    "inputs/rq4/initial_causal_features.tsv.gz": "ee06db4e3bb8c164397a85d2c75a55bd8f58ff0e939b0019fc80cfecf52c781a",
+    "inputs/rq4/test_causal_features.tsv.gz": "fb37991961f153c65c4b151ac4910517eec39f488693d734624a88d166dfe2be",
+    "protocol.json": "fcb33bf1f2403409e215a5040970d1b84829ca089b957cea2415e83e6940bcbc",
+    "vendor/calibration.py": "35c2947867e293f626302b09548cdb58aa6d09662b71b2530bb8f447819739b9",
+    "vendor/common.py": "089213fd9795ac4b356f293770de56ef6c780b643157bb9e723ca06aafb82545",
+    "vendor/history.py": "e199531d6abded01770d1821caeb2b8b64e62cac7a8a5dafbcb5c604cb52e513",
+    "vendor/modeling.py": "61fac127236818f635514e53cf8ecaeeafc6d08e2ec1b307ed19878d1cf02a0c",
+    "vendor/selective_gates.py": "080024941ae1e472f3f9bdf1f31a5c9b28c073f9785eaeaa2eab81a190fbdabf"
+  },
+  "cohorts": {
+    "rq2": {
+      "initial": 28490,
+      "evaluation": 5026,
+      "workflows": 6,
+      "process_pairs": 32,
+      "development_roles": {
+        "fit": 17085,
+        "gate": 5722,
+        "calibrate": 5683
+      },
+      "batch_sizes": {
+        "0": 1014,
+        "1": 1004,
+        "2": 1004,
+        "3": 1004,
+        "4": 1000
+      },
+      "missing_runtime": 449,
+      "assignment_hashes": {
+        "initial_assignment.tsv": "b8edbd63ef7bc0f7640f5984f92da3506b973237ca255465a070ed1c4ea3c157",
+        "evaluation_assignment.tsv": "ab7cfb18f0d744501cf720c9c4ccc61e959ae16fa25da230826a968ae3edecfa"
+      }
+    },
+    "rq4": {
+      "initial": 9141,
+      "evaluation": 21337,
+      "workflows": 6,
+      "process_pairs": 14,
+      "development_roles": {
+        "fit": 5486,
+        "calibrate": 1836,
+        "gate": 1819
+      },
+      "batch_sizes": {
+        "0": 4270,
+        "1": 4270,
+        "2": 4266,
+        "3": 4266,
+        "4": 4265
+      },
+      "missing_runtime": 0,
+      "assignment_hashes": {
+        "initial_assignment.tsv": "b0836c04c27291aeaf306e58e2c40a6f5ca26302308516078bfcc4e7fc1c626d",
+        "evaluation_assignment.tsv": "6365e59c54f63a6e0a8dc365e5f565effb8b6394d904173b6d6916c4d7ae0804"
+      }
+    }
+  }
+}

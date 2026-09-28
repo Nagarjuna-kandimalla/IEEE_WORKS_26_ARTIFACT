@@ -76,6 +76,7 @@ steps.
 | `DATA/` | Compressed six-workflow inputs for the offline allocation and selective-auditing experiments. | [`DATA/README.md`](DATA/README.md) |
 | `SCRIPTS/` | Postprocessing, offline experiments, comparisons, and figure-generation programs grouped by research question. | [`SCRIPTS/README.md`](SCRIPTS/README.md) |
 | `RESULTS/` | Frozen CSV/TSV inputs and the figures produced from them, grouped by research question. | [`RESULTS/README.md`](RESULTS/README.md) |
+| `Reviewer_Feedbacks/` | W1, W2, W3, and W5 reviewer experiments, local reproduction inputs, and tested reproduction instructions. | [`Reviewer_Feedbacks/README.md`](Reviewer_Feedbacks/README.md) |
 
 Generated virtual environments, raw sequencing files, downloaded workflow
 repositories, Nextflow work directories, container caches, uncompressed

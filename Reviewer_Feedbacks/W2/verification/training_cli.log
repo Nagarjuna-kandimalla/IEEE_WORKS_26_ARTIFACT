@@ -1,0 +1,12 @@
+usage: fresh_training.py [-h] [--workers WORKERS] [--threads THREADS]
+                         destination
+
+Run the full original W2 training experiment in a new output directory.
+
+positional arguments:
+  destination
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --workers WORKERS
+  --threads THREADS

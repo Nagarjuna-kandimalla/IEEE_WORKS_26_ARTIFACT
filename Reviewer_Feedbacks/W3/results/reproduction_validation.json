@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "tasks_per_arm": 5026,
+  "seed": 1996,
+  "read_underallocations": 32,
+  "read_mmap_underallocations": 30,
+  "request_scaling": false,
+  "original_prediction_bytes_match": true,
+  "verification_level": "metrics recomputed from original task predictions; no fresh training"
+}

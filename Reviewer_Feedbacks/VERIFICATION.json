@@ -1,0 +1,52 @@
+{
+  "verified_utc": "2026-09-28T21:41:43.963048+00:00",
+  "verification_level": "local result recomputation from recorded inputs/predictions/outcomes; original full model training not repeated",
+  "packages": {
+    "W1": {
+      "status": "passed",
+      "command": "REVIEWER_PYTHON=<compatible Python 3.9 environment> bash reproduce.sh",
+      "log": "W1/verification/reproduce.log",
+      "log_sha256": "21284902a44d7f7f94c320dc90255570cdce09926b96291b7c1f473f61b40195"
+    },
+    "W2": {
+      "status": "passed",
+      "command": "REVIEWER_PYTHON=<compatible Python 3.9 environment> bash reproduce.sh",
+      "log": "W2/verification/reproduce.log",
+      "log_sha256": "5faa1a4ba03b960c97c0f028e2515d810739249d87a9f9b32b340041fd95fdb1",
+      "contract_tests_passed": 6
+    },
+    "W3": {
+      "status": "passed",
+      "command": "REVIEWER_PYTHON=<compatible Python 3.9 environment> bash reproduce.sh",
+      "log": "W3/verification/reproduce.log",
+      "log_sha256": "b91b1946d44fb3a4499b69e70c5284b58a1ec017ceead61de00c2f8ee7bdc18e",
+      "original_prediction_hashes_match": true
+    },
+    "W5": {
+      "status": "passed",
+      "command": "REVIEWER_PYTHON=<compatible Python 3.9 environment> bash reproduce.sh",
+      "log": "W5/verification/reproduce.log",
+      "log_sha256": "34cb2f7f8f178f054726d94ceae1b904f8e7169baba8c342affddb0af0063900"
+    }
+  },
+  "original_artifact_source_files_unchanged": [
+    "DATA/RQ2/camp_ml_cohort_33516.csv.gz",
+    "DATA/RQ4/inputs/seed_1996/a_plus_p/task_predictions.tsv.gz",
+    "DATA/RQ4/inputs/seed_1996/a_plus_p_plus_c/task_predictions.tsv.gz",
+    "RESULTS/RQ2/csv/a_plus_p_plus_c_task_predictions.tsv.gz",
+    "RESULTS/RQ2/csv/a_plus_p_task_predictions.tsv.gz",
+    "RESULTS/RQ3/csv/global_metrics.csv",
+    "SCRIPTS/RQ2/data/split_manifests/gatk_1996.tsv",
+    "SCRIPTS/RQ2/data/split_manifests/minimap2_1996.tsv",
+    "SCRIPTS/RQ2/data/split_manifests/sarek_1996.tsv",
+    "SCRIPTS/RQ2/data/split_manifests/seqinspector_1996.tsv",
+    "SCRIPTS/RQ2/data/split_manifests/taxprofiler_1996.tsv",
+    "SCRIPTS/RQ2/data/split_manifests/viralmetagenome_1996.tsv",
+    "SCRIPTS/RQ3/harness/config/experiment.json",
+    "SCRIPTS/RQ3/harness/scripts/common.py",
+    "SCRIPTS/RQ3/harness/scripts/prepare_data.py",
+    "SCRIPTS/RQ3/scripts/summarize_comparison.py"
+  ],
+  "model_training_runs_launched": 0,
+  "cloud_jobs_submitted": 0
+}

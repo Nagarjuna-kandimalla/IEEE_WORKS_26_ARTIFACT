@@ -1,0 +1,7 @@
+{
+  "cohort": "rq4",
+  "label": "Sizey-comparison 30/70 split",
+  "status": "retained",
+  "original_experiment_fingerprint": "c8a7628af0469e8d6c501f01c8483fda71542bf698cb3d22223b45bedaa078df",
+  "historical_metadata": "protocol.json and prepared manifests retain the frozen two-cohort contract; workspace.py selects only this folder\u2019s cohort. No experiment settings or outcome files were changed."
+}

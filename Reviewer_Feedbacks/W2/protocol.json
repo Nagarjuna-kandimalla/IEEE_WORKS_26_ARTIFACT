@@ -1,0 +1,28 @@
+{
+  "version": "r3w2-batched-feedback-v1",
+  "cohorts": ["rq2", "rq4"],
+  "audit_budgets": [0.05, 0.10, 0.20, 0.30, 0.50],
+  "primary_budget": 0.20,
+  "sampling_seeds": [1996, 1997, 1998, 1999, 2000],
+  "pending_batches": 5,
+  "development_fractions": [0.60, 0.20, 0.20],
+  "development_roles": ["fit", "calibrate", "gate"],
+  "online_calibration_fraction": 0.20,
+  "model_seeds": [20260728, 20260729, 20260730],
+  "n_estimators": 350,
+  "crossfit_folds": 5,
+  "allocation": {
+    "rq2": {"base_policy": "model_q995", "residual_quantile": 0.99, "mode": "hierarchical"},
+    "rq4": {"base_policy": "model_q99", "residual_quantile": 0.95, "mode": "hierarchical"}
+  },
+  "gate_scenario": "a_plus_p_plus_c",
+  "lane_fractions": {"risk": 0.80, "information": 0.10, "discovery": 0.10},
+  "random_comparator": "uniform_without_replacement_within_workflow_equal_quotas",
+  "primary_evaluation": "batches_2_through_5",
+  "secondary_evaluation": "all_batches",
+  "memory_matching": "scale_random_requests_to_selective_total_separately_per_batch_using_requests_only",
+  "bootstrap_repetitions": 2000,
+  "bootstrap_seed": 73129,
+  "execution": "recorded_measurements_revealed_at_batch_completion",
+  "notes": "Five fixed balanced pending batches; original cohort membership retained. Batch scheduling is experimental, not a reproduction of recorded wall-clock concurrency. Initial fully audited development cost is shared and excluded from incremental audit budgets. Sampling repetitions hold model seeds fixed. No production outcomes inspected when writing this protocol."
+}

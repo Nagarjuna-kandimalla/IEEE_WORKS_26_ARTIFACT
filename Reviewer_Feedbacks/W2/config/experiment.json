@@ -1,0 +1,108 @@
+{
+  "experiment_name": "rq4_selective_auditing_a_plus_p_and_a_plus_p_plus_c",
+  "seed": 1996,
+  "expected_rows": 30478,
+  "expected_train_rows": 9141,
+  "expected_test_rows": 21337,
+  "expected_workflows": 6,
+  "expected_processes": 14,
+  "history": {
+    "initial_training_mode": "warm_leave_one_out",
+    "nearest_k": 48,
+    "scope_window": 512,
+    "exact_min_support": 2,
+    "input_min_support": 3,
+    "nearest_min_support": 8,
+    "process_min_support": 16,
+    "workflow_min_support": 32
+  },
+  "models": {
+    "folds": 5,
+    "model_seeds": [
+      20260728,
+      20260729,
+      20260730
+    ],
+    "quantiles": [
+      0.5,
+      0.9,
+      0.95,
+      0.99,
+      0.995
+    ],
+    "n_estimators": 350,
+    "learning_rate": 0.03
+  },
+  "point_stack": {
+    "minimum_static_anchor_weight": 0.9,
+    "weight_grid_step": 0.1,
+    "tie_penalty_toward_a_plus_p": 0.002
+  },
+  "allocation": {
+    "final_contract": "separate_a_plus_p_and_a_plus_p_plus_c_hierarchical_residual",
+    "dynamic_tail_quantile": 0.995,
+    "enhanced_policy_scope": "global",
+    "target_global_coverage": 0.99,
+    "minimum_workflow_coverage": 0.975,
+    "target_process_coverage": 0.99,
+    "calibration_reference_fraction": 0.6,
+    "residual_quantiles": [
+      0.9,
+      0.95,
+      0.975,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "base_policies": [
+      "point_q50",
+      "neighbour_p95",
+      "neighbour_p99",
+      "model_q90",
+      "model_q95",
+      "model_q99",
+      "model_q995"
+    ],
+    "retry_multiplier": 1.5
+  },
+  "selective_audit": {
+    "budgets": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0
+    ],
+    "equal_budget_repetitions": 1000,
+    "lane_fractions": {
+      "risk": 0.8,
+      "information": 0.1,
+      "discovery": 0.1
+    },
+    "lane_fraction_selection": "highest predeclared calibration objective across the calibrated gate scenarios",
+    "discovery_random_fraction": 0.5,
+    "risk_score_weights": {
+      "underallocation_probability_rank": 0.7,
+      "expected_shortfall_rank": 0.3
+    },
+    "discovery_score_weights": {
+      "tail_interval_rank": 0.35,
+      "local_global_spread_rank": 0.25,
+      "nearest_history_distance_rank": 0.2,
+      "history_confidence_deficit": 0.2
+    },
+    "ipw_clip_weight": 20.0
+  },
+  "variants": [
+    "A+P",
+    "A+P+C"
+  ],
+  "feature_contract": {
+    "A+P": "prelaunch static task and system features plus causal prior peak-RSS history, support, confidence, and similarity",
+    "A+P+C": "A+P plus causal prior consumed-data history and predicted current consumed bytes"
+  },
+  "consumed_target": "ebpf_total_consumed_bytes",
+  "consumed_formula": "ebpf_read_return_bytes + ebpf_mmap_page_fault_bytes",
+  "rss_target": "peak_memory_bytes"
+}
