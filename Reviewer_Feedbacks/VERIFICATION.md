@@ -49,3 +49,21 @@ The original 16 artifact source files recorded by W1 still match their
 previous hashes. The original reviewer workspaces were copied, not moved.
 This artifact update adds `Reviewer_Feedbacks/` and a link in the root README;
 the existing experiment data, code, and result files are retained.
+
+## C-hat ablation addition — 2026-09-30
+
+The `chat_ablation/reproduce.sh` command also passed from the copied artifact
+directory. It verified the cohort and feature contract, recomputed native
+metrics and all 5,000 grouped-bootstrap repetitions, and reproduced both route
+tables and the original-paper endpoint comparison. The original table validator
+matched all four output CSVs and the analysis manifest against the archived
+references (`rtol=1e-9`, `atol=1e-7`).
+
+The latest ablation counts are **85 / 46 / 52 / 30** for A+P, A+P+CH,
+A+P+CHAT, and A+P+CH+CHAT, respectively, on the same 5,026 test tasks.
+The original 87/31 paper comparison remains separately labeled.
+Full model training and fresh dependency installation were not repeated.
+
+Evidence: [verification details](chat_ablation/verification/README.md),
+[execution log](chat_ablation/verification/reproduce.log), and
+[validation record](chat_ablation/verification/validation.json).

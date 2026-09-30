@@ -1,0 +1,92 @@
+{
+  "experiment_name": "camp_rq2_offline_experiment",
+  "source_data": "data/canonical_matched_tasks.tsv",
+  "source_split_manifest": "data/split_manifest_primary.tsv",
+  "split_manifest_root": "data/split_manifests",
+  "seed": 1996,
+  "variance_seeds": [
+    1996,
+    1997,
+    1998,
+    1999,
+    2000
+  ],
+  "expected_rows": 33516,
+  "expected_train_rows": 28490,
+  "expected_test_rows": 5026,
+  "expected_original_train_rows": 23460,
+  "expected_original_calibration_rows": 5030,
+  "expected_workflows": 6,
+  "expected_processes": 42,
+  "history": {
+    "initial_training_mode": "warm_leave_one_out",
+    "nearest_k": 48,
+    "scope_window": 512,
+    "exact_min_support": 2,
+    "input_min_support": 3,
+    "nearest_min_support": 8,
+    "process_min_support": 16,
+    "workflow_min_support": 32
+  },
+  "models": {
+    "folds": 5,
+    "model_seeds": [
+      20260728,
+      20260729,
+      20260730
+    ],
+    "quantiles": [
+      0.5,
+      0.9,
+      0.95,
+      0.99,
+      0.995
+    ],
+    "n_estimators": 350,
+    "learning_rate": 0.03
+  },
+  "point_stack": {
+    "minimum_static_anchor_weight": 0.9,
+    "weight_grid_step": 0.1,
+    "tie_penalty_toward_A": 0.002
+  },
+  "allocation": {
+    "final_contract": "dual_history_dynamic_safety_bound",
+    "dynamic_tail_quantile": 0.995,
+    "enhanced_policy_scope": "global",
+    "target_global_coverage": 0.99,
+    "minimum_workflow_coverage": 0.975,
+    "target_process_coverage": 0.99,
+    "calibration_reference_fraction": 0.6,
+    "residual_quantiles": [
+      0.9,
+      0.95,
+      0.975,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "base_policies": [
+      "point_q50",
+      "neighbour_p95",
+      "neighbour_p99",
+      "model_q90",
+      "model_q95",
+      "model_q99",
+      "model_q995"
+    ],
+    "retry_multiplier": 1.5
+  },
+  "variants": [
+    "A+P",
+    "A+P+C"
+  ],
+  "feature_contract": {
+    "A": "prelaunch static task and system features",
+    "P": "causal prior peak-RSS history, support, confidence, and similarity",
+    "C": "causal prior consumed-data history plus predicted current consumed bytes"
+  },
+  "consumed_target": "ebpf_total_consumed_bytes",
+  "consumed_formula": "ebpf_read_return_bytes + ebpf_mmap_page_fault_bytes",
+  "rss_target": "peak_memory_bytes"
+}

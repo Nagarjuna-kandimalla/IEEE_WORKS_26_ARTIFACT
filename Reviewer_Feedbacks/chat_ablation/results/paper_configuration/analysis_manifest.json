@@ -1,0 +1,11 @@
+{
+  "development_rows": 28490,
+  "test_rows": 5026,
+  "split": "85/15 chronological",
+  "split_seed": 1996,
+  "access_route": "global",
+  "camp_variant_route": "process-tail with global fallback",
+  "bootstrap_repetitions": 5000,
+  "bootstrap_unit": "split_group within workflow",
+  "test_labels_used_for_training_or_policy_selection": false
+}

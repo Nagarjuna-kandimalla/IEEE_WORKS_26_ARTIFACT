@@ -1,0 +1,6 @@
+    variant  rows  mdape_percent  mean_ape_percent  p95_ape_percent  spearman  q99_pinball_mib  q99_coverage_percent  underallocations  coverage_percent  total_request_gib  request_to_peak  unused_gib_hours
+        A+P  5026      21.749952       1452.562438      4584.257537  0.842951        28.936035             97.194588                85         98.308794       26075.257812         1.763559         63.683307
+     A+P+CH  5026      21.319859        414.941727      2798.502112  0.879090       230.937503             84.182252                46         99.084759       80852.560547         5.468336         37.187044
+   A+P+CHAT  5026      24.410802       1774.991240     15885.116859  0.835677       163.246302             85.216872                52         98.965380      123957.789062         8.383690         60.940093
+A+P+CH+CHAT  5026      26.512534        451.531526      1549.304817  0.877315       198.970175             84.241942                30         99.403104       34271.486328         2.317898         39.751425
+Paper-configuration ablation completed.

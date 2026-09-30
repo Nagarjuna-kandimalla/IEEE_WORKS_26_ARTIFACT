@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "development_rows": 28490,
+  "test_rows": 5026,
+  "missing_runtime_rows": 449,
+  "seed": 1996,
+  "variants": {
+    "A+P": {
+      "rows": 5026,
+      "underallocations": 85
+    },
+    "A+P+CH": {
+      "rows": 5026,
+      "underallocations": 46
+    },
+    "A+P+CHAT": {
+      "rows": 5026,
+      "underallocations": 52
+    },
+    "A+P+CH+CHAT": {
+      "rows": 5026,
+      "underallocations": 30
+    }
+  },
+  "verification_scope": "packaged inputs, feature membership, and retained predictions",
+  "model_training_performed": false
+}

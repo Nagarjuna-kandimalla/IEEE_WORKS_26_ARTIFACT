@@ -1,0 +1,12 @@
+{
+  "base_policy": "model_q99",
+  "constraint_status": "met",
+  "mode": "hierarchical",
+  "reference_rows": 17210,
+  "residual_quantile": 0.9,
+  "selection_global_coverage": 0.9902482269503546,
+  "selection_minimum_workflow_coverage": 0.9777215189873417,
+  "selection_oom_tasks": 110,
+  "selection_request_to_peak_ratio": 2.7222939556033117,
+  "selection_rows": 11280
+}

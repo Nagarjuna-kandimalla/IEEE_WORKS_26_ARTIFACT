@@ -1,0 +1,12 @@
+{
+  "base_policy": "neighbour_p95",
+  "constraint_status": "met",
+  "mode": "hierarchical",
+  "reference_rows": 17210,
+  "residual_quantile": 0.99,
+  "selection_global_coverage": 0.9903368794326242,
+  "selection_minimum_workflow_coverage": 0.9759036144578314,
+  "selection_oom_tasks": 109,
+  "selection_request_to_peak_ratio": 67.10136560479381,
+  "selection_rows": 11280
+}

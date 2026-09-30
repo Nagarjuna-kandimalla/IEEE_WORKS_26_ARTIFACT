@@ -1,0 +1,32 @@
+{
+  "verified_utc": "2026-09-30T00:19:15.764612+00:00",
+  "status": "passed",
+  "command": "REVIEWER_PYTHON=<Python 3.9 environment matching requirements.txt> bash reproduce.sh",
+  "log": "reproduce.log",
+  "log_sha256": "0a29fd6afbea2f4c1649b0e12a750b0d3e8109ddf15a1880d5b8fc090632720b",
+  "reproduction_scope": "retained task-level predictions; model training not repeated",
+  "test_rows": 5026,
+  "underallocations": {
+    "A+P": 85,
+    "A+P+CH": 46,
+    "A+P+CHAT": 52,
+    "A+P+CH+CHAT": 30
+  },
+  "bootstrap_repetitions_recomputed": 5000,
+  "validated_tables": [
+    "paper_configuration/native_metrics.csv",
+    "paper_configuration/bootstrap_contrasts.csv",
+    "route_analysis/route_stratified_metrics.csv",
+    "route_analysis/paper_endpoint_reproduction.csv"
+  ],
+  "analysis_manifest_matches": true,
+  "contract_validation": "../results/contract_validation.json",
+  "rtol": 1e-09,
+  "atol": 1e-07,
+  "shell_syntax_passed": true,
+  "python_syntax_passed": true,
+  "training_entry_point_help_passed": true,
+  "fresh_training_runs": 0,
+  "cloud_jobs_submitted": 0,
+  "fresh_environment_installations": 0
+}
